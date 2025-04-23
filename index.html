@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account</title>
+    <title>Home</title>
 </head>
 <body>
     <header>
@@ -14,28 +14,18 @@
           <a href="signin.html">Login / Register</a>
         </nav>
     </header>
-    <main>
-        <h2>Posters</h2>
-        
-
-
-        <table>
-            <tr>
-                <th>Preview</th>
-                <th>Name</th>
-                <th>Date</th>
-            </tr>
-            <tr>
-                <th><a href="posters/starwars.html"><img src="starwars-prev.png"></a></th>
-                <th><a href="posters/starwars.html">Star Wars</a></th>
-                <th><time>07.04.2025</time></th>
-            </tr>
-            <tr>
-                <th><a href="posters/pulpfiction.html"><img src="pulpfiction-prev.png"></a></th>
-                <th><a href="posters/pulpfiction.html">Pulp Fiction</a></th>
-                <th><time>06.04.2025</time></th>
-            </tr>
-        </table>
+    <main class="poster-grid">
+        <h1>Posters</h1>
+        <article class="poster-preview">
+            <a href="posters/poster-1.html"><img src="https://picsum.photos/200/300?grayscale&random=1"></a>
+            <a href="posters/poster-1.html" class="name">Poster 1</a>
+            <p class="time">07.04.2025</p>
+        </article>
+        <article class="poster-preview">
+            <a href="posters/poster-2.html"><img src="https://picsum.photos/200/300?grayscale&random=2"></a>
+            <a href="posters/poster-2.html" class="name">Poster 2</a>
+            <p class="time">06.04.2025</p>
+        </article>
     </main>
 </body>
 </html>

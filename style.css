@@ -1,0 +1,166 @@
+*{
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background-color: white;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+header {
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+    background-color:whitesmoke;
+    padding: 5px 10%;
+}
+
+header h1{
+    font-size: 18px;
+    color: #2c2c2c
+}
+
+nav{
+    display: flex;
+    margin: 5px;
+}
+
+nav a{
+    color: black;
+    text-decoration-line: none;
+    text-transform: uppercase;
+    margin: 0px 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav a:hover{
+    text-decoration: underline;
+}
+
+main {
+    margin: 16px 10%;
+}
+
+main > h1{
+    margin: 16px 0;
+}
+
+form.account {
+    margin: auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: grid;
+    gap: 1rem;
+  }
+  
+  /* CHANGE!!!*/
+  form.account > div {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  form.account label {
+    text-align: right;
+    font-weight: bold;
+  }
+  
+  form.account input[type="text"],
+  form.account input[type="email"],
+  form.account input[type="url"] {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+  }
+  
+  form.account input[type="submit"] {
+    grid-column: 2 / 3;
+    justify-self: start;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    background-color: darkgrey;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  form.account input[type="submit"]:hover {
+    background-color: gray;
+  }
+
+.poster article{
+    display: grid;
+    grid-template-areas:
+    "img title"
+    "img text";
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+    margin: 0px 0px 16px 0px
+}
+
+.poster article img{
+    grid-area: img;
+    border-radius: 4px;
+}
+
+.poster article h1{
+    grid-area: title;
+    grid-column-end: span 1;
+    grid-row-end: span 1;
+}
+
+.poster article p{
+    grid-area: text;
+}
+
+.poster article > *{
+    margin: 0px 8px 8px 0px;
+}
+
+.poster-grid{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0px;
+}
+.poster-grid article{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    color: black;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 8px 8px;
+    margin: 0px 16px 16px 0px;
+}
+
+.poster-grid article:hover{
+    border-color: blue;
+}
+
+.poster-grid article a:first-child{
+    grid-column-end: span 2;
+}
+
+.poster-preview > a > img{
+    border-radius: 4px;
+}
+
+.poster-grid article a:not(:first-child){
+    text-decoration: none;
+    color: black;
+}
+
+.poster-grid article .time{
+    text-align: right;
+}

@@ -12,7 +12,7 @@ body {
 header {
     display: flex;
     justify-content: space-between;
-    background-color:rgb(231, 231, 231);
+    background-color:rgb(255, 134, 253);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     padding: 5px 10%;
     top: 0;
@@ -204,4 +204,87 @@ form input[type="submit"]:hover,
 
 .poster-grid article .time{
     text-align: right;
+}
+
+@page {
+    size: A4;
+    width: 595px;
+    height: 842px;
+    margin: 0px;
+    padding: 0px;
+}
+@media print {
+    body {
+        margin: 50px;
+        font-size: small;
+    }
+    header, .poster-bot{
+        display: none;
+    }
+    main {
+        margin: 0px;
+        margin-top: 330px;
+    }
+    main > h1{
+        position: fixed;
+        top: 200px;
+        left: 46px;
+        z-index: 10;
+        background-color: #FFFFFF;
+        border-radius: 4px;
+        padding: 0px 4px;
+        font-size: 40px;
+    }
+    article:first-of-type > img:first-of-type{
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 595px;
+        height: 300px;
+        overflow: hidden;
+        object-fit: cover;
+    }
+    article:first-of-type > p:first-of-type{
+        column-count: 3;
+        grid-column: span 3;
+        width: 496px;
+    }
+    article:first-of-type > h1:first-of-type{
+        grid-column: span 3;
+        width: 496px;
+    }
+    article:nth-of-type(2) > img{
+        grid-column-start: 3;
+    }
+    article:nth-of-type(2) > p,
+    article:nth-of-type(2) > h1{
+        grid-column-start: 1;
+    }
+    article{
+        display: grid;
+        grid-template-columns: 152px 152px 152px;
+        column-gap: 20px;
+        max-height: 152px;
+        margin-bottom: 35px;
+    }
+    article > p{
+        column-count: 2;
+        grid-column: span 1;
+        max-height: 128px;
+        width: 324px;
+        font-size: 11px;
+        column-fill: auto;
+    }
+    article > img{
+        grid-column: span 1;
+        height: 152px;
+        width: 152px;
+        object-fit: cover;
+    }
+    article > h1 {
+        grid-column: span 2;
+        font-size: 14px;
+        height: 18px;
+        width: 324px;
+    }
 }

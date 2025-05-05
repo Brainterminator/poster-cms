@@ -12,7 +12,7 @@ body {
 header {
     display: flex;
     justify-content: space-between;
-    background-color:rgb(255, 134, 253);
+    background-color:rgb(68, 227, 241);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     padding: 5px 10%;
     top: 0;
@@ -112,8 +112,7 @@ form input[type="submit"],
     text-decoration: none;
     font-size: 1rem;
     padding: 0.6rem 1.2rem;
-    background-color: darkgrey;
-    color: white;
+    background-color: rgb(68, 227, 241);
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -123,7 +122,7 @@ form input[type="submit"],
   
 form input[type="submit"]:hover,
 .button:hover {
-    background-color: gray;
+    background-color: rgb(118, 233, 243);
 }
 
 
@@ -223,24 +222,25 @@ form input[type="submit"]:hover,
     }
     main {
         margin: 0px;
-        margin-top: 330px;
+        margin-top: 310px;
     }
     main > h1{
         position: absolute;
-        top: 200px;
+        top: 170px;
         left: 46px;
         z-index: 10;
         background-color: #FFFFFF;
         border-radius: 4px;
         padding: 0px 4px;
         font-size: 40px;
+        border-radius: 0px;
     }
     article:first-of-type > img:first-of-type{
         position: absolute;
         top: 0px;
         left: 0px;
         width: 595px;
-        height: 300px;
+        height: 270px;
         overflow: hidden;
         object-fit: cover;
     }
@@ -263,9 +263,9 @@ form input[type="submit"]:hover,
     article{
         display: grid;
         grid-template-columns: 152px 152px 152px;
-        column-gap: 20px;
+        column-gap: 15px;
         max-height: 152px;
-        margin-bottom: 35px;
+        margin-bottom: 40px;
     }
     article > p{
         column-count: 2;

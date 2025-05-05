@@ -207,51 +207,53 @@ form input[type="submit"]:hover,
 
 @page {
     size: A4;
-    width: 595px;
-    height: 842px;
-    margin: 0px;
-    padding: 0px;
 }
 @media print {
+    *{
+        margin: 0mm;
+        padding: 0mm;
+    }
     body {
-        margin: 50px;
-        font-size: small;
+        margin: 25mm;
+        margin-top: 120mm;
     }
     header, .poster-bot{
         display: none;
     }
-    main {
-        margin: 0px;
-        margin-top: 310px;
+    main{
+        margin: 0mm;
+        padding: 0mm;
+        width: 152mm;
+        height: 152mm;
     }
     main > h1{
         position: absolute;
-        top: 170px;
-        left: 46px;
+        top: 60mm;
+        left: 23mm;
         z-index: 10;
         background-color: #FFFFFF;
-        border-radius: 4px;
-        padding: 0px 4px;
-        font-size: 40px;
-        border-radius: 0px;
+        border-radius: 2mm;
+        padding: 0mm 2mm;
+        font-size: 16mm;
+        border-radius: none;
     }
     article:first-of-type > img:first-of-type{
         position: absolute;
-        top: 0px;
-        left: 0px;
-        width: 595px;
-        height: 270px;
+        top: 0mm;
+        left: 0mm;
+        width: 210mm;
+        height: 100mm;
         overflow: hidden;
         object-fit: cover;
     }
     article:first-of-type > p:first-of-type{
         column-count: 3;
         grid-column: span 3;
-        width: 496px;
+        width: 152mm;
     }
     article:first-of-type > h1:first-of-type{
         grid-column: span 3;
-        width: 496px;
+        width: 152mm;
     }
     article:nth-of-type(2) > img{
         grid-column-start: 3;
@@ -262,29 +264,40 @@ form input[type="submit"]:hover,
     }
     article{
         display: grid;
-        grid-template-columns: 152px 152px 152px;
-        column-gap: 15px;
-        max-height: 152px;
-        margin-bottom: 40px;
+        grid-template-columns: 45mm 45mm 45mm;
+        margin: 0mm;
+        margin-bottom: 11.5mm;
+        padding: 0mm;
+        width: 152mm;
+        column-gap: 8.5mm;
+        height: 43mm;
+        margin-bottom: 10.5mm;
     }
     article > p{
+        margin: 0mm;
+        padding: 0mm;
         column-count: 2;
         grid-column: span 1;
-        max-height: 128px;
-        width: 324px;
-        font-size: 11px;
+        height: 37mm;
+        width: 98.5mm;
+        font-size: 3.12mm;
         column-fill: auto;
     }
     article > img{
+        margin: 0mm;
+        padding: 0mm;
         grid-column: span 1;
-        height: 152px;
-        width: 152px;
+        height: 43mm;
+        width: 45mm;
         object-fit: cover;
+        overflow:hidden;
     }
     article > h1 {
+        margin: 0mm;
+        padding: 0mm;
         grid-column: span 2;
-        font-size: 14px;
-        height: 18px;
-        width: 324px;
+        font-size: 4mm;
+        height: 6mm;
+        width: 98.5mm;
     }
 }

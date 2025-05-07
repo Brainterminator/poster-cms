@@ -5,6 +5,12 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Poster CMS",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}/PosterCMS/PosterCMS.csproj"
+        },
+        {
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",

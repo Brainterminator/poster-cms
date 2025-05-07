@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using MyApp.Namespace;
 using PosterCMS.Models;
 
 namespace PosterCMS.Controllers;
@@ -18,7 +19,12 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Privacy()
+    public IActionResult Account()
+    {
+        return View();
+    }
+
+    public IActionResult SignIn()
     {
         return View();
     }

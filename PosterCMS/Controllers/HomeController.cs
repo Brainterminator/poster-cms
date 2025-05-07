@@ -1,6 +1,5 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using MyApp.Namespace;
 using PosterCMS.Models;
 
 namespace PosterCMS.Controllers;

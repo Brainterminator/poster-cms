@@ -10,5 +10,10 @@ namespace PosterCMS.Controllers
             return View();
         }
 
+        public ActionResult Edit()
+        {
+            return View();
+        }
+
     }
 }

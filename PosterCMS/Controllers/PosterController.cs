@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace MyApp.Namespace
+namespace PosterCMS.Controllers
 {
     public class PosterController : Controller
     {

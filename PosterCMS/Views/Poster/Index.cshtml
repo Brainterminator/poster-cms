@@ -3,21 +3,24 @@
 *@
 @{
 }
-<h1>Poster 2</h1>
+
+@model PosterModel
+
+<h1>@Model.Title</h1>
 <section class="poster">
     <article>
-        <h1>Lorem</h1>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.</p>
+        <h1>@Model.Sub1</h1>
+        <p>@Model.Text1</p>
         <img src="https://picsum.photos/200/300?&random=1">
     </article>
     <article>
-        <h1>Ipsum</h1>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend</p>
+        <h1>@Model.Sub2</h1>
+        <p>@Model.Text2</p>
         <img src="https://picsum.photos/200/300?&random=2">
     </article>
     <article>
-        <h1>Dolor</h1>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend</p>
+        <h1>@Model.Sub3</h1>
+        <p>@Model.Text3</p>
         <img src="https://picsum.photos/200/300?&random=3">
     </article>
     <div class="poster-bot">
@@ -25,6 +28,6 @@
             <input type="button" value="print" class="button" onclick="window.print();">
             <input type="button" value="export" class="button">
         </div>
-        <a class="button" asp-area="" asp-controller="Poster" asp-action="Edit">edit</a>
+        <a class="button" asp-area="" asp-controller="Poster" asp-action="Edit" asp-route-id=@Model.ID>edit</a>
     </div>
 </section>

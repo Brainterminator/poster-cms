@@ -17,16 +17,17 @@ namespace PosterCMS.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int id)
         {
-            return View();
+            var model = _context.Posters.Find(id);
+            return View("Index", model);
         }
 
         public IActionResult Edit(int id)
         {
             var model = _context.Posters.Find(id);
             ViewData["FormAction"] = "EditPoster";
-            return View("Editor", id);
+            return View("Editor", model);
         }
 
         public IActionResult Create()
@@ -39,11 +40,21 @@ namespace PosterCMS.Controllers
             _context.Add(poster);
             _context.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", poster);
         }
 
         public IActionResult EditPoster(PosterModel poster){
-            return RedirectToAction("Index");
+            _context.Update(poster);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", poster);
+        }
+
+        public IActionResult DeletePoster(int id){
+            var toDelete = _context.Posters.SingleOrDefault(x => x.ID == id);
+            _context.Posters.Remove(toDelete);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

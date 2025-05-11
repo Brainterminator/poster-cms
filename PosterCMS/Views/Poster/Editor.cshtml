@@ -47,7 +47,8 @@
     <div class="buttons">
         <input type="submit" class="button">
         @{
-            if (ViewData["FormAction"].ToString() == "EditPoster"){
+            var formAction = ViewData["FormAction"] as string;
+            if (formAction == "EditPoster"){
                 <a class="button delete" asp-area="" asp-controller="Poster" asp-action="DeletePoster" asp-route-id=@Model.ID>Delete</a>
             }
         }

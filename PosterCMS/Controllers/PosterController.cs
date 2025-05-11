@@ -52,8 +52,10 @@ namespace PosterCMS.Controllers
 
         public IActionResult DeletePoster(int id){
             var toDelete = _context.Posters.SingleOrDefault(x => x.ID == id);
-            _context.Posters.Remove(toDelete);
-            _context.SaveChanges();
+            if (toDelete != null){
+                _context.Posters.Remove(toDelete);
+                _context.SaveChanges();
+            }
             return RedirectToAction("Index", "Home");
         }
     }

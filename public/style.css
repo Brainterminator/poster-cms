@@ -125,6 +125,16 @@ form input[type="submit"]:hover,
     background-color: rgb(118, 233, 243);
 }
 
+.button.delete{
+    background-color: rgb(255, 0, 0);
+    font-weight: bold;
+    color: white;
+}
+
+.button.delete:hover{
+    background-color: rgb(255, 61, 61);
+}
+
 
 
 

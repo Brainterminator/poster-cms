@@ -1,7 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using PosterCMS.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<PosterDbContext>(options =>
+    options.UseInMemoryDatabase("PosterDB")
+);
 
 var app = builder.Build();
 

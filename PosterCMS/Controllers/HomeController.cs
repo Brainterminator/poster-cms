@@ -7,15 +7,19 @@ namespace PosterCMS.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    
+    private readonly PosterDbContext _context;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, PosterDbContext context)
     {
         _logger = logger;
+        _context = context;
     }
 
     public IActionResult Index()
     {
-        return View();
+        var Posters = _context.Posters.ToList();
+        return View(Posters);
     }
 
     public IActionResult Account()

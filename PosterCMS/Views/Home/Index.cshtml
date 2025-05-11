@@ -5,6 +5,7 @@
 @model List<PosterModel>
 
 <h1>Posters</h1>
+<a class="button" asp-area="" asp-controller="Poster" asp-action="Create">Add Poster</a>
 <section class="poster-grid">
     @{
         foreach (var poster in Model){

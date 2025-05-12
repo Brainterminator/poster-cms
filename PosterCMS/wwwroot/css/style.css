@@ -53,6 +53,13 @@ main > h1{
     margin-right: 16px;
 }
 
+article > img{
+    height: 300px;
+    width: 200px;
+    object-fit: cover;
+    overflow:hidden;
+}
+
 
 
 

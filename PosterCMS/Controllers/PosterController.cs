@@ -37,6 +37,7 @@ namespace PosterCMS.Controllers
         }
 
         public IActionResult CreatePoster(PosterModel poster){
+            poster.Date = DateTime.Now;
             _context.Add(poster);
             _context.SaveChanges();
 

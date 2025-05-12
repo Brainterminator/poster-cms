@@ -12,7 +12,7 @@
             <article class="poster-preview">
                 <a asp-area="" asp-controller="Poster" asp-action="Index" asp-route-id=@poster.ID><img src="https://picsum.photos/200/300?&random=@poster.ID"></a>
                 <a asp-area="" asp-controller="Poster" asp-action="Index" asp-route-id=@poster.ID><p class="name">@poster.Title</p></a>
-                <a asp-area="" asp-controller="Poster" asp-action="Index" asp-route-id=@poster.ID><p class="time">@poster.Date</p></a>
+                <a asp-area="" asp-controller="Poster" asp-action="Index" asp-route-id=@poster.ID><p class="time">@poster.Date.ToString().Split(' ')[0]</p></a>
             </article>
         }
     }

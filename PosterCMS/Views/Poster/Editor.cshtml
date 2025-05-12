@@ -9,6 +9,7 @@
 
 <form asp-action="@ViewData["FormAction"]" asp-controller="Poster">
 <input type="hidden" value=@Model.ID asp-for="ID">
+<input type="hidden" value=@Model.Date asp-for="Date">
 <div>
     <label>Main Headline</label>
     <input type="text" value="@Model.Title" asp-for="Title">

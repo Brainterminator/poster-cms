@@ -203,6 +203,7 @@ form input[type="submit"]:hover,
     padding: 12px 12px;
     margin: 0px 24px 24px 0px;
     transition: 0.3s ease;
+    width: 224px;
 }
 
 .poster-grid article:hover{
@@ -216,6 +217,14 @@ form input[type="submit"]:hover,
     margin: 0px 0px 8px;
 }
 
+.poster-grid article a:nth-child(2){
+    display: block;
+    min-width: 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .poster-preview > a > img{
     border-radius: 4px;
 }
@@ -226,4 +235,5 @@ form input[type="submit"]:hover,
 
 .poster-grid article .time{
     text-align: right;
+    align-self: self-end;
 }

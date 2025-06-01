@@ -8,20 +8,26 @@ public class PosterModel
 
     [MaxLength(20)]
     public string? Title { get; set; }
-    
+    [MaxLength(30)]
     public string? Author { get; set; }
     
-    public DateTime? Date { get; set; }
+    [Required]
+    public DateTime CreateDate { get; set; }
+    [Required]
+    public DateTime EditDate { get; set; }
     
     public string? Sub1 { get; set; }
     
-    public string? Text1 { get; set; } // Max 870
+    [MaxLength(870)]
+    public string? Text1 { get; set; }
     
     public string? Sub2 { get; set; }
     
-    public string? Text2 { get; set; } // Max 560
+    [MaxLength(560)]
+    public string? Text2 { get; set; }
     
     public string? Sub3 { get; set; }
     
-    public string? Text3 { get; set;} // Max 560
+    [MaxLength(560)]
+    public string? Text3 { get; set; }
 }

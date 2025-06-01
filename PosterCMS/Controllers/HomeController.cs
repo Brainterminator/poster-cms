@@ -20,7 +20,7 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
-        var Posters = _context.Posters.ToList();
+        var Posters = _context.Posters.OrderByDescending(p => p.EditDate).ToList();
         var Previews = new Dictionary<int, byte[]>();
 
         foreach (var poster in Posters)

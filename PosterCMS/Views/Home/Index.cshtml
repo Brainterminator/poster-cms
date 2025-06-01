@@ -13,7 +13,7 @@
             <article class="poster-preview">
                 <a asp-area="" asp-controller="Poster" asp-action="Index" asp-route-id=@poster.ID><img src="data:image/jpg;base64, @Convert.ToBase64String(Previews[poster.ID])"></a>
                 <a asp-area="" asp-controller="Poster" asp-action="Index" asp-route-id=@poster.ID>@poster.Title</a>
-                <a asp-area="" asp-controller="Poster" asp-action="Index" asp-route-id=@poster.ID><p class="time">@poster.Date.ToString().Split(' ')[0]</p></a>
+                <a asp-area="" asp-controller="Poster" asp-action="Index" asp-route-id=@poster.ID><p class="time">@poster.EditDate.ToString().Split(' ')[0]</p></a>
             </article>
         }
     }

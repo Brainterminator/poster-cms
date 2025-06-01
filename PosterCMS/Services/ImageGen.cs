@@ -20,7 +20,7 @@ public class ImageGen
         await page.SetViewportAsync(new ViewPortOptions
         {
             Width = 794,
-            Height = 1123
+            Height = 1122
         });
 
         await page.EmulateMediaTypeAsync(MediaType.Print);

@@ -1,5 +1,7 @@
 using System.Diagnostics;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using PosterCMS.Models;
 
 namespace PosterCMS.Controllers;
@@ -7,7 +9,7 @@ namespace PosterCMS.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-    
+
     private readonly PosterDbContext _context;
 
     public HomeController(ILogger<HomeController> logger, PosterDbContext context)
@@ -16,9 +18,17 @@ public class HomeController : Controller
         _context = context;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
         var Posters = _context.Posters.ToList();
+        var Previews = new Dictionary<int, byte[]>();
+
+        foreach (var poster in Posters)
+        {
+            Previews.Add(poster.ID, await ImageGen.GenerateA4Thumbnail("http://localhost:5299/Poster/Index/" + poster.ID));
+        }
+
+        ViewBag.Previews = Previews;
         return View(Posters);
     }
 

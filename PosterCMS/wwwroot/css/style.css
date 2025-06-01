@@ -227,6 +227,10 @@ form input[type="submit"]:hover,
 
 .poster-preview > a > img{
     border-radius: 4px;
+    width: 200px;
+    object-fit: contain;
+    overflow:hidden;
+    align-self: start;
 }
 
 .poster-grid article a:not(:first-child){

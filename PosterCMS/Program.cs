@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using PosterCMS;
 using PosterCMS.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,5 +32,6 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
+ImageGen.readyUp();
 
 app.Run();

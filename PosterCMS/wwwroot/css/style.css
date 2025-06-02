@@ -46,7 +46,7 @@ nav a:hover {
 }
 
 main {
-    margin: 16px 10%;
+    margin: 16px 5% 16px 10%;
 }
 
 main>h1 {
@@ -161,7 +161,7 @@ form input[type="submit"]:hover,
         "img text";
     grid-template-columns: auto 1fr;
     grid-template-rows: auto 1fr;
-    margin: 0px 0px 16px 0px
+    margin: 0px 0px 16px 0px;
 }
 
 .poster article img {
@@ -195,6 +195,7 @@ form input[type="submit"]:hover,
 .poster-grid {
     display: flex;
     flex-wrap: wrap;
+    gap: 24px;
     margin: 0px;
 }
 
@@ -205,7 +206,7 @@ form input[type="submit"]:hover,
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     padding: 12px 12px;
-    margin: 0px 24px 24px 0px;
+    /*margin: 0px 24px 24px 0px;*/
     transition: 0.3s ease;
     width: 224px;
 }
@@ -249,6 +250,11 @@ form input[type="submit"]:hover,
 }
 
 
+.image-grid.poster-grid article {
+    margin-top: 0px;
+    padding-top: 4px;
+}
+
 .image-grid .poster-preview>img {
     border-radius: 4px;
     grid-row: span 1;
@@ -258,7 +264,7 @@ form input[type="submit"]:hover,
     object-fit: cover;
     overflow: hidden;
     align-self: start;
-    margin: 0px 0px 8px;
+    margin-bottom: 8px;
 }
 
 .image-grid.poster-grid article .rm-img-btn {
@@ -268,8 +274,8 @@ form input[type="submit"]:hover,
     top: -10px;
     right: -10px;
     z-index: 20;
-    height:25px;
-    width:25px;
+    height: 25px;
+    width: 25px;
     object-fit: contain;
     justify-self: right;
     padding: 2px;
@@ -304,7 +310,7 @@ form input[type="submit"]:hover,
     flex-flow: row;
     grid-row: span 1;
     grid-column: span 1;
-    height:18px;
+    height: 18px;
     justify-self: right;
     align-items: center;
     padding: 4px 8px;
@@ -317,11 +323,54 @@ form input[type="submit"]:hover,
 }
 
 .image-grid.poster-grid article .cpy-btn-svg {
-    height:16px;
+    height: 16px;
     width: 16px;
     object-fit: contain;
 }
 
 .image-grid.poster-grid article .cpy-btn:hover {
     background-color: rgb(118, 233, 243);
+}
+
+
+.custom-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    position: relative;
+    width: 80%;
+    height: 80%;
+    margin: 5% auto;
+    background: #fff;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.modal-header {
+    padding: 10px;
+    background-color: rgb(68, 227, 241);
+    /*background-color: #f0f0f0;*/
+    /*border-bottom: 1px solid #ccc;*/
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.close-btn {
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.iframe-content {
+    flex: 1;
+    width: 100%;
+    border: none;
 }

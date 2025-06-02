@@ -65,7 +65,7 @@ public class HomeController : Controller
             ViewBag.Message = "No file selected.";
         }
 
-        return View("ImageUploader");
+        return RedirectToAction("ViewImages");
     }
 
     [HttpGet]

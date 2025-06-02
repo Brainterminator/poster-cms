@@ -67,6 +67,32 @@
                 <a class="button delete" asp-area="" asp-controller="Poster" asp-action="DeletePoster" asp-route-id=@Model.ID>Delete</a>
             }
         }
+        <button type="button" onclick="openImageManager('ImageUrl1')">Choose</button>
     </div>
 </div>
 </form>
+
+<!-- Modal for Image Manager -->
+<div id="imageManagerModal" class="custom-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close-btn" onclick="closeImageManager()">&times;</span>
+        </div>
+        <iframe id="imageManagerFrame" src="" frameborder="0" class="iframe-content"></iframe>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script>
+        function openImageManager() {
+            // Save the input field we want to update
+            document.getElementById('imageManagerFrame').src = '/Home/ViewImages'; // or your manager URL
+            document.getElementById('imageManagerModal').style.display = 'block';
+        }
+
+        function closeImageManager() {
+            document.getElementById('imageManagerModal').style.display = 'none';
+        }
+    </script>
+}

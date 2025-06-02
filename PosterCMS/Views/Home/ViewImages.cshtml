@@ -1,9 +1,11 @@
 @model List<string>
 @{
     var baseUrl = $"{Context.Request.Scheme}://{Context.Request.Host}/uploads/";
+    Layout = "Modal.cshtml";
 }
 
 <h1>Uploaded Images</h1>
+<a class="button" asp-area="" asp-controller="Home" asp-action="ImageUploader">Upload Image</a>
 
 @if (Model.Count == 0)
 {

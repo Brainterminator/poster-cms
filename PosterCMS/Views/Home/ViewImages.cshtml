@@ -3,7 +3,7 @@
     var baseUrl = $"{Context.Request.Scheme}://{Context.Request.Host}/uploads/";
 }
 
-<h2>Uploaded Images</h2>
+<h1>Uploaded Images</h1>
 
 @if (Model.Count == 0)
 {
@@ -11,24 +11,25 @@
 }
 else
 {
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px;">
+    <section class="poster-grid image-grid">
         @foreach (var fileName in Model)
         {
             var imageUrl = baseUrl + fileName;
-            <div style="text-align: center; border: 1px solid #ccc; padding: 10px;">
-                <img src="@imageUrl" alt="@fileName" style="max-width: 100%; height: auto;" />
-                <p style="word-break: break-all;">@imageUrl</p>
-                <button onclick="copyToClipboard('@imageUrl')">Copy Link</button>
-            </div>
+            <article class="poster-preview">
+                <button class="rm-img-btn" onclick="delete('@fileName')">Delete</button>
+                <img src="@imageUrl">
+                <p>@fileName</p>
+                <button onclick="copyToClipboard('@imageUrl')">Copy URL</button>
+            </article>
         }
-    </div>
+    </section>
 }
 
 @section Scripts {
     <script>
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
-                alert("Copied to clipboard!");
+                console.log("Copied to clipboard!");
             }, (err) => {
                 alert("Failed to copy: " + err);
             });

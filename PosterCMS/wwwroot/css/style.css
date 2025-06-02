@@ -233,6 +233,8 @@ form input[type="submit"]:hover,
     object-fit: contain;
     overflow:hidden;
     align-self: start;
+    grid-column-end: span 2;
+    margin: 0px 0px 8px;
 }
 
 .poster-grid article a:not(:first-child){
@@ -242,4 +244,48 @@ form input[type="submit"]:hover,
 .poster-grid article .time{
     text-align: right;
     align-self: self-end;
+}
+
+
+.image-grid .poster-preview > img{
+    border-radius: 4px;
+    grid-row: span 1;
+    grid-column: span 2;
+    width: 200px;
+    height: 282px;
+    object-fit: cover;
+    overflow:hidden;
+    align-self: start;
+    margin: 0px 0px 8px;
+}
+
+.image-grid.poster-grid article .rm-img-btn{
+    visibility: hidden;
+    position: absolute;
+    align-content: center;
+    top: 0px;
+    right: 0px;
+    z-index: 20;
+}
+
+.image-grid.poster-grid article:hover .rm-img-btn{
+    visibility: visible;
+}
+
+.image-grid.poster-grid article p{
+    grid-row: span 1;
+    grid-column: span 1;
+    display: block;
+    min-width: 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.image-grid.poster-grid article button{
+    grid-row: span 1;
+    grid-column: span 1;
+    text-align: right;
+    width: fit-content;
+    justify-self: right;
 }

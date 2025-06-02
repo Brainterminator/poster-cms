@@ -102,6 +102,7 @@ form input[type="text"],
 form input[type="email"],
 form input[type="url"],
 form input[type="password"],
+form input[type="file"],
 form textarea{
     padding: 0.5rem;
     border: 1px solid #ccc;
@@ -113,6 +114,7 @@ form textarea{
 form article textarea{
     height: 6rem;
     font-family: Arial, Helvetica, sans-serif;
+    resize: none;
 }
   
 form .buttons{

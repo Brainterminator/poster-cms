@@ -16,10 +16,13 @@ else
         {
             var imageUrl = baseUrl + fileName;
             <article class="poster-preview">
-                <button class="rm-img-btn" onclick="delete('@fileName')">Delete</button>
+                <img class="rm-img-btn" onclick="delete('@fileName')" src="/icons/delete.svg">
                 <img src="@imageUrl">
-                <p>@fileName</p>
-                <button onclick="copyToClipboard('@imageUrl')">Copy URL</button>
+                <p class="img-name">@fileName</p>
+                <div class="cpy-btn">
+                    <p>copy</p>
+                    <img onclick="copyToClipboard('@imageUrl')" src="/icons/copy.svg" class="cpy-btn-svg"></img>
+                </div>
             </article>
         }
     </section>

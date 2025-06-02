@@ -1,23 +1,24 @@
-*{
+* {
     box-sizing: border-box;
     padding: 0px;
     margin: 0px;
     color: #343434
 }
 
-main > h1, main > h1 + a {
-  display: inline-block;
-  vertical-align: middle;
+main>h1,
+main>h1+a {
+    display: inline-block;
+    vertical-align: middle;
 }
 
 body {
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 header {
     display: flex;
     justify-content: space-between;
-    background-color:rgb(68, 227, 241);
+    background-color: rgb(68, 227, 241);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     padding: 5px 10%;
     top: 0;
@@ -25,39 +26,39 @@ header {
     position: sticky;
 }
 
-header h1{
+header h1 {
     font-size: x-large;
 }
 
-nav{
+nav {
     display: flex;
     margin: 5px;
 }
 
-nav a{
+nav a {
     text-decoration-line: none;
     margin: 0px 6px;
     display: flex;
 }
 
-nav a:hover{
+nav a:hover {
     text-decoration: underline;
 }
 
-main{
+main {
     margin: 16px 10%;
 }
 
-main > h1{
+main>h1 {
     margin: 16px 0;
     margin-right: 16px;
 }
 
-article > img{
+article>img {
     height: 300px;
     width: 200px;
     object-fit: cover;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 
@@ -78,32 +79,32 @@ form {
     display: grid;
     gap: 1rem;
 }
-  
-form > div,
-form article > div {
+
+form>div,
+form article>div {
     grid-template-columns: 2fr 7fr;
     align-items: center;
     display: grid;
-    gap: 1rem;   
+    gap: 1rem;
 }
 
-form article{
+form article {
     display: grid;
     gap: 0.5rem;
 }
-  
+
 form label {
     text-align: right;
     font-weight: bold;
     font-size: 1rem;
 }
-  
+
 form input[type="text"],
 form input[type="email"],
 form input[type="url"],
 form input[type="password"],
 form input[type="file"],
-form textarea{
+form textarea {
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -111,13 +112,13 @@ form textarea{
     font-size: 1rem;
 }
 
-form article textarea{
+form article textarea {
     height: 6rem;
     font-family: Arial, Helvetica, sans-serif;
     resize: none;
 }
-  
-form .buttons{
+
+form .buttons {
     grid-column: 2 / 3;
 }
 
@@ -134,55 +135,55 @@ form input[type="submit"],
     transition: background-color 0.3s ease;
     margin: 0px 4px 0px 0px;
 }
-  
+
 form input[type="submit"]:hover,
 .button:hover {
     background-color: rgb(118, 233, 243);
 }
 
-.button.delete{
+.button.delete {
     background-color: rgb(255, 0, 0);
     font-weight: bold;
     color: white;
 }
 
-.button.delete:hover{
+.button.delete:hover {
     background-color: rgb(255, 61, 61);
 }
 
 
 
 
-.poster article{
+.poster article {
     display: grid;
     grid-template-areas:
-    "img title"
-    "img text";
+        "img title"
+        "img text";
     grid-template-columns: auto 1fr;
     grid-template-rows: auto 1fr;
     margin: 0px 0px 16px 0px
 }
 
-.poster article img{
+.poster article img {
     grid-area: img;
     border-radius: 4px;
 }
 
-.poster article h1{
+.poster article h1 {
     grid-area: title;
     grid-column-end: span 1;
     grid-row-end: span 1;
 }
 
-.poster article p{
+.poster article p {
     grid-area: text;
 }
 
-.poster article > *{
+.poster article>* {
     margin: 0px 8px 8px 0px;
 }
 
-.poster-bot{
+.poster-bot {
     display: flex;
     justify-content: space-between;
 }
@@ -191,12 +192,13 @@ form input[type="submit"]:hover,
 
 
 
-.poster-grid{
+.poster-grid {
     display: flex;
     flex-wrap: wrap;
     margin: 0px;
 }
-.poster-grid article{
+
+.poster-grid article {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
@@ -208,18 +210,18 @@ form input[type="submit"]:hover,
     width: 224px;
 }
 
-.poster-grid article:hover{
+.poster-grid article:hover {
     transform: scale(1.02);
     z-index: 10;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-.poster-grid article a:first-child{
+.poster-grid article a:first-child {
     grid-column-end: span 2;
     margin: 0px 0px 8px;
 }
 
-.poster-grid article a:nth-child(2){
+.poster-grid article a:nth-child(2) {
     display: block;
     min-width: 0px;
     overflow: hidden;
@@ -227,52 +229,67 @@ form input[type="submit"]:hover,
     white-space: nowrap;
 }
 
-.poster-preview > a > img{
+.poster-preview>a>img {
     border-radius: 4px;
     width: 200px;
     object-fit: contain;
-    overflow:hidden;
+    overflow: hidden;
     align-self: start;
     grid-column-end: span 2;
     margin: 0px 0px 8px;
 }
 
-.poster-grid article a:not(:first-child){
+.poster-grid article a:not(:first-child) {
     text-decoration: none;
 }
 
-.poster-grid article .time{
+.poster-grid article .time {
     text-align: right;
     align-self: self-end;
 }
 
 
-.image-grid .poster-preview > img{
+.image-grid .poster-preview>img {
     border-radius: 4px;
     grid-row: span 1;
     grid-column: span 2;
     width: 200px;
     height: 282px;
     object-fit: cover;
-    overflow:hidden;
+    overflow: hidden;
     align-self: start;
     margin: 0px 0px 8px;
 }
 
-.image-grid.poster-grid article .rm-img-btn{
+.image-grid.poster-grid article .rm-img-btn {
     visibility: hidden;
     position: absolute;
     align-content: center;
-    top: 0px;
-    right: 0px;
+    top: -10px;
+    right: -10px;
     z-index: 20;
+    height:25px;
+    width:25px;
+    object-fit: contain;
+    justify-self: right;
+    padding: 2px;
+    background-color: rgb(255, 0, 0);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.image-grid.poster-grid article:hover .rm-img-btn{
+.image-grid.poster-grid article .rm-img-btn:hover {
+    background-color: rgb(255, 61, 61);
+}
+
+.image-grid.poster-grid article:hover .rm-img-btn {
     visibility: visible;
 }
 
-.image-grid.poster-grid article p{
+.image-grid.poster-grid article p {
     grid-row: span 1;
     grid-column: span 1;
     display: block;
@@ -282,10 +299,29 @@ form input[type="submit"]:hover,
     white-space: nowrap;
 }
 
-.image-grid.poster-grid article button{
+.image-grid.poster-grid article .cpy-btn {
+    display: flex;
+    flex-flow: row;
     grid-row: span 1;
     grid-column: span 1;
-    text-align: right;
-    width: fit-content;
+    height:18px;
     justify-self: right;
+    align-items: center;
+    padding: 4px 8px;
+    background-color: rgb(68, 227, 241);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0px 4px 0px 0px;
+}
+
+.image-grid.poster-grid article .cpy-btn-svg {
+    height:16px;
+    width: 16px;
+    object-fit: contain;
+}
+
+.image-grid.poster-grid article .cpy-btn:hover {
+    background-color: rgb(118, 233, 243);
 }

@@ -21,9 +21,9 @@ else
                 <a href="@Url.Action("DeleteImage", "Home", new { path = "uploads/" + fileName })"><img class="rm-img-btn" src="/icons/delete.svg"></a>
                 <img src="@imageUrl">
                 <p class="img-name">@fileName</p>
-                <div class="cpy-btn">
+                <div class="cpy-btn" onclick="copyToClipboard('@imageUrl')" >
                     <p>copy</p>
-                    <img onclick="copyToClipboard('@imageUrl')" src="/icons/copy.svg" class="cpy-btn-svg"></img>
+                    <img src="/icons/copy.svg" class="cpy-btn-svg"></img>
                 </div>
             </article>
         }

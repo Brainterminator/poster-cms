@@ -61,13 +61,13 @@
 <div>
     <div class="buttons">
         <input type="submit" class="button">
+        <button type="button" class="img-mgr-btn" onclick="openImageManager()">Image Manager</button>
         @{
             var formAction = ViewData["FormAction"] as string;
             if (formAction == "EditPoster"){
                 <a class="button delete" asp-area="" asp-controller="Poster" asp-action="DeletePoster" asp-route-id=@Model.ID>Delete</a>
             }
         }
-        <button type="button" onclick="openImageManager('ImageUrl1')">Choose</button>
     </div>
 </div>
 </form>

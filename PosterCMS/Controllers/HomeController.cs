@@ -79,6 +79,13 @@ public class HomeController : Controller
         return View(imageFiles);
     }
 
+    [HttpGet]
+    public IActionResult DeleteImage(String path)
+    {
+        ImageManager.DeleteImage(path);
+        return RedirectToAction("ViewImages");
+    }
+
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

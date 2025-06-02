@@ -51,5 +51,17 @@ public class ImageManager
 
         return;
     }
+
+    public static void DeleteImage(String path)
+    {
+        // Ensure the directory exists
+        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", path);
+
+        if (System.IO.File.Exists(filePath))
+        {
+            System.IO.File.Delete(filePath);
+        }
+        return;
+    }
 }
 

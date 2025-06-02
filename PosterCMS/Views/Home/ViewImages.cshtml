@@ -16,7 +16,7 @@ else
         {
             var imageUrl = baseUrl + fileName;
             <article class="poster-preview">
-                <img class="rm-img-btn" onclick="delete('@fileName')" src="/icons/delete.svg">
+                <a href="@Url.Action("DeleteImage", "Home", new { path = "uploads/" + fileName })"><img class="rm-img-btn" src="/icons/delete.svg"></a>
                 <img src="@imageUrl">
                 <p class="img-name">@fileName</p>
                 <div class="cpy-btn">

@@ -1,4 +1,5 @@
 using System.Diagnostics.Tracing;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -36,26 +37,34 @@ namespace PosterCMS.Controllers
             return View("Editor", new PosterModel());
         }
 
-        public IActionResult CreatePoster(PosterModel poster){
+        public async Task<IActionResult> CreatePoster(PosterModel poster)
+        {
             poster.CreateDate = DateTime.Now;
             poster.EditDate = DateTime.Now;
             _context.Add(poster);
             _context.SaveChanges();
 
+            ImageManager.SaveImage(await ImageManager.GenerateA4Thumbnail("http://localhost:5299/Poster/Index/" + poster.ID), "thumbnails/" + poster.ID + ".jpg");
+
             return RedirectToAction("Index", poster);
         }
 
-        public IActionResult EditPoster(PosterModel poster){
+        public async Task<IActionResult> EditPoster(PosterModel poster)
+        {
             poster.EditDate = DateTime.Now;
             _context.Update(poster);
             _context.SaveChanges();
 
+            ImageManager.SaveImage(await ImageManager.GenerateA4Thumbnail("http://localhost:5299/Poster/Index/" + poster.ID), "thumbnails/" + poster.ID + ".jpg");
+
             return RedirectToAction("Index", poster);
         }
 
-        public IActionResult DeletePoster(int id){
+        public IActionResult DeletePoster(int id)
+        {
             var toDelete = _context.Posters.SingleOrDefault(x => x.ID == id);
-            if (toDelete != null){
+            if (toDelete != null)
+            {
                 _context.Posters.Remove(toDelete);
                 _context.SaveChanges();
             }

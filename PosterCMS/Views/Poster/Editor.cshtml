@@ -11,6 +11,7 @@
 <input type="hidden" value=@Model.ID asp-for="ID">
 <input type="hidden" value=@Model.CreateDate asp-for="CreateDate">
 <input type="hidden" value=@Model.EditDate asp-for="EditDate">
+<input type="hidden" value=@Model.Author asp-for="Author">
 <div>
     <label>Main Headline</label>
     <input type="text" value="@Model.Title" asp-for="Title">
@@ -24,6 +25,10 @@
         <label>Article Content</label>
         <textarea asp-for="Text1">@Model.Text1</textarea>
     </div>
+    <div>
+        <label>Image (Hyperlink)</label>
+        <input type="url" value="@Model.ImageUrl1" asp-for="ImageUrl1">
+    </div>
 </article>
 <article>
     <div>
@@ -34,6 +39,10 @@
         <label>Article Content</label>
         <textarea asp-for="Text2">@Model.Text2</textarea>
     </div>
+    <div>
+        <label>Image (Hyperlink)</label>
+        <input type="url" value="@Model.ImageUrl2" asp-for="ImageUrl2">
+    </div>
 </article>
 <article>
     <div>
@@ -43,6 +52,10 @@
     <div>
         <label>Article Content</label>
         <textarea asp-for="Text3">@Model.Text3</textarea>
+    </div>
+    <div>
+        <label>Image (Hyperlink)</label>
+        <input type="url" value="@Model.ImageUrl3" asp-for="ImageUrl3">
     </div>
 </article>
 <div>

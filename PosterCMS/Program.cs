@@ -32,6 +32,6 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
-ImageGen.readyUp();
+ImageManager.readyUp();
 
 app.Run();

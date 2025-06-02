@@ -24,9 +24,11 @@ public class ImageManager
             Height = 1122
         });
 
+        await page.SetCacheEnabledAsync(false);
+
         await page.EmulateMediaTypeAsync(MediaType.Print);
 
-        await page.GoToAsync(url);
+        await page.GoToAsync(url, WaitUntilNavigation.Load);
         return await page.ScreenshotDataAsync(new ScreenshotOptions
         {
             Type = ScreenshotType.Jpeg,

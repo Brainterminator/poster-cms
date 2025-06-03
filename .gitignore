@@ -2,5 +2,10 @@
 PosterCMS/bin/
 PosterCMS/obj/
 PosterCMS/publish/
+PosterCMS/appsettings.json
+PosterCMS/appsettings.Development.json
+PosterCMS/wwwroot/thumbnails/*
+PosterCMS/wwwroot/uploads/*
+PosterCMS/
 .fake
 .DS_Store

@@ -20,6 +20,8 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseStaticFiles();
+
 app.UseHttpsRedirection();
 app.UseRouting();
 
@@ -34,4 +36,18 @@ app.MapControllerRoute(
 
 ImageManager.readyUp();
 
+createDir("uploads");
+createDir("thumbnails");
+
 app.Run();
+
+void createDir(string folder)
+{
+    var webRootPath = app.Environment.WebRootPath;
+    var uploadsPath = Path.Combine(webRootPath, folder);
+
+    if (!Directory.Exists(uploadsPath))
+    {
+        Directory.CreateDirectory(uploadsPath);
+    }
+}

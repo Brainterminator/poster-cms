@@ -39,8 +39,9 @@ namespace PosterCMS.Controllers
 
         public async Task<IActionResult> CreatePoster(PosterModel poster)
         {
-            poster.CreateDate = DateTime.Now;
-            poster.EditDate = DateTime.Now;
+            poster.CreateDate = DateTime.UtcNow;
+            poster.EditDate = DateTime.UtcNow;
+            
             _context.Add(poster);
             _context.SaveChanges();
 
@@ -51,7 +52,9 @@ namespace PosterCMS.Controllers
 
         public async Task<IActionResult> EditPoster(PosterModel poster)
         {
-            poster.EditDate = DateTime.Now;
+            poster.EditDate = DateTime.UtcNow;
+            poster.CreateDate = DateTime.SpecifyKind(poster.CreateDate, DateTimeKind.Utc);
+
             _context.Update(poster);
             _context.SaveChanges();
 

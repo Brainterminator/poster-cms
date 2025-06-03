@@ -3,3 +3,4 @@ PosterCMS/bin/
 PosterCMS/obj/
 PosterCMS/publish/
 .fake
+.DS_Store

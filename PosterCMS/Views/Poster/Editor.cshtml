@@ -7,7 +7,7 @@
 
 @model PosterModel
 
-<form asp-action="@ViewData["FormAction"]" asp-controller="Poster">
+<form asp-action="@ViewData["FormAction"]" asp-controller="Poster" method="post">
 <input type="hidden" value=@Model.ID asp-for="ID">
 <input type="hidden" value=@Model.CreateDate asp-for="CreateDate">
 <input type="hidden" value=@Model.EditDate asp-for="EditDate">

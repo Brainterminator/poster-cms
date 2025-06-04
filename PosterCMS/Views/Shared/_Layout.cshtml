@@ -1,5 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var email = Context.Request.Cookies["AuthEmail"];
+    var isLoggedIn = !string.IsNullOrEmpty(email);
+}
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,13 +14,20 @@
     <link rel="stylesheet" href="/css/print-a4.css" media="print and (orientation: portrait)" />
     <link rel="stylesheet" href="/css/print-a3.css" media="print and (orientation: landscape)" />
 </head>
+
 <body>
     <header>
         <h1>Poster CMS</h1>
         <nav>
             <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-            <a asp-area="" asp-controller="Home" asp-action="Account">Account</a>
-            <a asp-area="" asp-controller="Home" asp-action="SignIn">Login / Register</a>
+            @if (isLoggedIn)
+            {
+                <a asp-area="" asp-controller="Home" asp-action="Account">Account</a>
+            }
+            else
+            {
+                <a asp-area="" asp-controller="Home" asp-action="SignIn">Login / Register</a>
+            }
         </nav>
     </header>
     <div class="container">
@@ -28,4 +40,5 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>

@@ -25,9 +25,9 @@
     </article>
     <div class="poster-bot">
         <div>
-            <input type="button" value="print" class="button" onclick="window.print();">
-            <input type="button" value="export" class="button" onclick="window.location.href='/Poster/ExportPoster?id=@Model.ID'">
+            <input type="button" value="Print" class="button" onclick="window.print();">
+            <input type="button" value="Export" class="button" onclick="window.location.href='/Poster/ExportPoster?id=@Model.ID'">
         </div>
-        <a class="button" asp-area="" asp-controller="Poster" asp-action="Edit" asp-route-id=@Model.ID>edit</a>
+        <a class="button" asp-area="" asp-controller="Poster" asp-action="Edit" asp-route-id=@Model.ID>Edit</a>
     </div>
 </section>

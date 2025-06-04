@@ -3,25 +3,32 @@
 *@
 @{
 }
+@model UserModel
 <h1>User Information</h1>
-    <form action="Index" method="POST">
-        <div>
-            <label>First Name:</label>
-            <input type="text" value="John" required="true">
+<form asp-controller="Home" asp-action="EditAccount" method="POST">
+    <input type="hidden" value="@Model.PasswordHash" asp-for="PasswordHash">
+    <input type="hidden" value="@Model.PasswordSalt" asp-for="PasswordSalt">
+    <div>
+        <label>First Name:</label>
+        <input type="text" value="@Model.FirstName" asp-for="FirstName">
+    </div>
+    <div>
+        <label>Last Name:</label>
+        <input type="text" value="@Model.LastName" asp-for="LastName">
+    </div>
+    <div>
+        <label>Email:</label>
+        <input type="email" value="@Model.Email" asp-for="Email" required="true" readonly>
+    </div>
+    <div>
+        <label>Socials:</label>
+        <input type="url" value="@Model.Socials" asp-for="Socials">
+    </div>
+    <div>
+        <div class="buttons">
+            <input type="submit" value="Save" class="button">
+            <a class="button delete" asp-area="" asp-controller="Home" asp-action="LogOut">Log out</a>
+            <label>@ViewBag.Message</label>
         </div>
-        <div>
-            <label>Last Name:</label>
-            <input type="text" value="Doe" required="true">
-        </div>
-        <div>
-            <label>Email:</label>
-            <input type="email" placeholder="johndoe@example.mail">
-        </div>
-        <div>
-            <label>Socials:</label>
-            <input type="url" placeholder="instagram.com/johndoe">
-        </div>
-        <div>
-            <input type="submit" value="Save" class="buttons">
-        </div>
-    </form>
+    </div>
+</form>

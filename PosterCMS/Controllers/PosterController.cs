@@ -42,6 +42,12 @@ namespace PosterCMS.Controllers
             poster.CreateDate = DateTime.UtcNow;
             poster.EditDate = DateTime.UtcNow;
 
+            var email = Request.Cookies["AuthEmail"];
+            if (email != null)
+            {
+                poster.Author = email;
+            }
+
             _context.Add(poster);
             _context.SaveChanges();
 
@@ -54,6 +60,12 @@ namespace PosterCMS.Controllers
         {
             poster.EditDate = DateTime.UtcNow;
             poster.CreateDate = DateTime.SpecifyKind(poster.CreateDate, DateTimeKind.Utc);
+
+            var email = Request.Cookies["AuthEmail"];
+            if (email != null)
+            {
+                poster.Author = email;
+            }
 
             _context.Update(poster);
             _context.SaveChanges();

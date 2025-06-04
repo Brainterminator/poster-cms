@@ -2,21 +2,25 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    
 }
+@model LoginModel
+
 <h1>Login / Register</h1>
-<form action="Account" method="post">
+<form asp-action="EditAccount" asp-controller="Home" method="post">
     <div>
-        <label>Username:</label>
-        <input type="text" placeholder="Username" required="true">
+        <label>Email:</label>
+        <input type="email" placeholder="john.doe@mail.com" required="true" asp-for="Email">
     </div>
     <div>
         <label>Password:</label>
-        <input type="password" placeholder="Password" required="true">
+        <input type="password" placeholder="Password" required="true" asp-for="Password">
     </div>
     <div>
         <div class="buttons">
-            <input type="submit" value="Login">
-            <input type="submit" value="Register">
+            <input type="submit" value="Login" asp-action="Login">
+            <input type="submit" value="Register" asp-action="Register">
+            <label>@ViewBag.Message</label>
         </div>
     </div>
 </form>

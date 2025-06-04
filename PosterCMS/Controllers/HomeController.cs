@@ -82,7 +82,7 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult DeleteImage(String path)
     {
-        ImageManager.DeleteImage(path);
+        ContentManager.DeleteImage(path);
         return RedirectToAction("ViewImages");
     }
 

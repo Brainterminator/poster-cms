@@ -164,11 +164,13 @@ form input[type="submit"]:hover,
     grid-template-columns: auto 1fr;
     grid-template-rows: auto 1fr;
     margin: 0px 0px 16px 0px;
+    font-size: 1.3rem;
 }
 
 .poster article img {
     grid-area: img;
     border-radius: 4px;
+    margin-right: 18px;
 }
 
 .poster article h1 {
@@ -266,7 +268,7 @@ form input[type="submit"]:hover,
     object-fit: cover;
     overflow: hidden;
     align-self: start;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 }
 
 .image-grid.poster-grid article .rm-img-btn {

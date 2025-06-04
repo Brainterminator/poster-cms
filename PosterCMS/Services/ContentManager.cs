@@ -3,7 +3,7 @@ using PuppeteerSharp.Media;
 
 namespace PosterCMS;
 
-public class ImageManager
+public class ContentManager
 {
     public static void readyUp()
     {

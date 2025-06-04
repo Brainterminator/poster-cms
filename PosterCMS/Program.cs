@@ -44,7 +44,7 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
-ImageManager.readyUp();
+ContentManager.readyUp();
 
 createDir("uploads");
 createDir("thumbnails");

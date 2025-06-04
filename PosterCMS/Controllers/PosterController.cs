@@ -53,7 +53,7 @@ namespace PosterCMS.Controllers
 
             ContentManager.SaveImage(await ContentManager.GenerateA4Thumbnail("http://localhost:5299/Poster/Index/" + poster.ID), "thumbnails/" + poster.ID + ".jpg");
 
-            return RedirectToAction("Index", poster);
+            return RedirectToAction("Index", new { id = poster.ID });
         }
 
         public async Task<IActionResult> EditPoster(PosterModel poster)
@@ -72,7 +72,7 @@ namespace PosterCMS.Controllers
 
             ContentManager.SaveImage(await ContentManager.GenerateA4Thumbnail("http://localhost:5299/Poster/Index/" + poster.ID), "thumbnails/" + poster.ID + ".jpg");
 
-            return RedirectToAction("Index", poster);
+            return RedirectToAction("Index", new { id = poster.ID });
         }
 
         public IActionResult DeletePoster(int id)

@@ -41,7 +41,7 @@ namespace PosterCMS.Controllers
         {
             poster.CreateDate = DateTime.UtcNow;
             poster.EditDate = DateTime.UtcNow;
-            
+
             _context.Add(poster);
             _context.SaveChanges();
 
@@ -72,6 +72,12 @@ namespace PosterCMS.Controllers
                 _context.SaveChanges();
             }
             return RedirectToAction("Index", "Home");
+        }
+
+        public async Task<IActionResult> ExportPoster(PosterModel poster)
+        {
+            var stream = await ContentManager.GeneratePDF(poster);
+            return File(stream, "application/pdf", "poster-printout.pdf");
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using PuppeteerSharp;
+﻿using PosterCMS.Models;
+using PuppeteerSharp;
 using PuppeteerSharp.Media;
 
 namespace PosterCMS;
@@ -63,5 +64,27 @@ public class ContentManager
         }
         return;
     }
+    public static async Task<Stream> GeneratePDF(PosterModel model)
+    {
+        using var browser = await Puppeteer.LaunchAsync(new LaunchOptions
+        {
+            Headless = true
+        });
+
+        // Open a new page
+        using var page = await browser.NewPageAsync();
+
+        // Navigate to your target URL
+        await page.GoToAsync("http://localhost:5299/Poster/Index/" + model.ID);
+
+        var pdfStream = await page.PdfStreamAsync(new PdfOptions
+        {
+            Format = PaperFormat.A4
+        });
+
+        // Return the stream as a downloadable file
+        return pdfStream;
+    }
 }
+
 

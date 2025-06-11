@@ -17,9 +17,8 @@
 
 <body>
     <header>
-        <h1>Poster CMS</h1>
+        <a asp-area="" asp-controller="Home" asp-action="Index">PosterCMS</a>
         <nav>
-            <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
             @if (isLoggedIn)
             {
                 <a asp-area="" asp-controller="Home" asp-action="Account">Account</a>

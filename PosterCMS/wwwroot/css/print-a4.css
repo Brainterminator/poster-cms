@@ -24,10 +24,9 @@ main > h1{
     left: 28mm;
     z-index: 10;
     background-color: #FFFFFF;
-    border-radius: 2mm;
+    /* border-radius: 2mm; */
     padding: 0mm 2mm;
     font-size: 16mm;
-    border-radius: none;
 }
 article:first-of-type > img:first-of-type{
     position: absolute;
@@ -103,5 +102,5 @@ article > img{
     object-fit: cover;
     overflow:hidden;
     align-self: start;
-    border-radius: 2mm;
+    /* border-radius: 2mm; */
 }

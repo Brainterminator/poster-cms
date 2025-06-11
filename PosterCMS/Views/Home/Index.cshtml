@@ -5,14 +5,17 @@
 @model List<PosterModel>
 
 <h1>Posters</h1>
-<a class="button" asp-area="" asp-controller="Poster" asp-action="Create">Add Poster</a>
+
 <section class="poster-grid">
+    <a class="button add-poster" asp-area="" asp-controller="Poster" asp-action="Create">+</a>
     @{
         foreach (var poster in Model){
             <article class="poster-preview">
                 <a asp-area="" asp-controller="Poster" asp-action="Index" asp-route-id=@poster.ID><img src="/thumbnails/@(poster.ID).jpg"></a>
-                <a asp-area="" asp-controller="Poster" asp-action="Index" asp-route-id=@poster.ID>@poster.Title</a>
-                <a asp-area="" asp-controller="Poster" asp-action="Index" asp-route-id=@poster.ID><p class="time">@poster.EditDate.ToString().Split(' ')[0]</p></a>
+                <div class="poster-labels">
+                    <a asp-area="" asp-controller="Poster" asp-action="Index" asp-route-id=@poster.ID>@poster.Title</a>
+                    <a asp-area="" asp-controller="Poster" asp-action="Index" asp-route-id=@poster.ID><p class="time">@poster.EditDate.ToString().Split(' ')[0]</p></a>
+                </div>
             </article>
         }
     }

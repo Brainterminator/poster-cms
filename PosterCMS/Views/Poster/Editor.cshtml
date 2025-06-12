@@ -1,79 +1,89 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model PosterModel
 @{
     ViewData["Title"] = "Editor";
 }
 
-@model PosterModel
+<h1 contenteditable="true" oninput="updateModel(this, 'Title')" data-placeholder="Title...">@Model.Title</h1>
 
-<form asp-action="@ViewData["FormAction"]" asp-controller="Poster" method="post">
-<input type="hidden" value=@Model.ID asp-for="ID">
-<input type="hidden" value=@Model.CreateDate asp-for="CreateDate">
-<input type="hidden" value=@Model.EditDate asp-for="EditDate">
-<input type="hidden" value=@Model.Author asp-for="Author">
-<div>
-    <label>Main Headline</label>
-    <input type="text" value="@Model.Title" asp-for="Title">
-</div>
-<article>
-    <div>
-        <label>Article Headline</label>
-        <input type="text" value="@Model.Sub1" asp-for="Sub1">
-    </div>
-    <div>
-        <label>Article Content</label>
-        <textarea asp-for="Text1">@Model.Text1</textarea>
-    </div>
-    <div>
-        <label>Image (Hyperlink)</label>
-        <input type="url" value="@Model.ImageUrl1" asp-for="ImageUrl1">
-    </div>
-</article>
-<article>
-    <div>
-        <label>Article Headline</label>
-        <input type="text" value="@Model.Sub2" asp-for="Sub2">
-    </div>
-    <div>
-        <label>Article Content</label>
-        <textarea asp-for="Text2">@Model.Text2</textarea>
-    </div>
-    <div>
-        <label>Image (Hyperlink)</label>
-        <input type="url" value="@Model.ImageUrl2" asp-for="ImageUrl2">
-    </div>
-</article>
-<article>
-    <div>
-        <label>Article Headline</label>
-        <input type="text" value="@Model.Sub3" asp-for="Sub3">
-    </div>
-    <div>
-        <label>Article Content</label>
-        <textarea asp-for="Text3">@Model.Text3</textarea>
-    </div>
-    <div>
-        <label>Image (Hyperlink)</label>
-        <input type="url" value="@Model.ImageUrl3" asp-for="ImageUrl3">
-    </div>
-</article>
-<div>
-    <div class="buttons">
-        <input type="submit" value="Save" class="button">
-        <button type="button" class="img-mgr-btn" onclick="openImageManager()">Image Manager</button>
+<section class="poster">
+    <article>
+        <h1 contenteditable="true" oninput="updateModel(this, 'Sub1')" data-placeholder="Subtitle...">@Model.Sub1</h1>
+        <p contenteditable="true" oninput="updateModel(this, 'Text1')" data-placeholder="Enter text here...">@Model.Text1</p>
+        <div class="image-wrapper">
+            <img src="@Model.ImageUrl1" class="editable-img" data-image-field="ImageUrl1"
+                onclick="openImageManager('ImageUrl1')">
+
+            <button type="button" class="edit-url-btn" onclick="openUrlEditor('ImageUrl1', '@Model.ImageUrl1')">Edit
+                URL</button>
+
+            <input type="hidden" id="ImageUrl1" name="ImageUrl1" value="@Model.ImageUrl1">
+        </div>
+
+
+    </article>
+
+    <article>
+        <h1 contenteditable="true" oninput="updateModel(this, 'Sub2')" data-placeholder="Subtitle...">@Model.Sub2</h1>
+        <p contenteditable="true" oninput="updateModel(this, 'Text2')" data-placeholder="Enter text here...">@Model.Text2</p>
+        <div class="image-wrapper">
+            <img src="@Model.ImageUrl2" class="editable-img" data-image-field="ImageUrl2"
+                onclick="openImageManager('ImageUrl2')">
+
+            <button type="button" class="edit-url-btn" onclick="openUrlEditor('ImageUrl2', '@Model.ImageUrl2')">Edit
+                URL</button>
+
+            <input type="hidden" id="ImageUrl2" name="ImageUrl2" value="@Model.ImageUrl2">
+        </div>
+    </article>
+
+    <article>
+        <h1 contenteditable="true" oninput="updateModel(this, 'Sub3')" data-placeholder="Subtitle...">@Model.Sub3</h1>
+        <p contenteditable="true" oninput="updateModel(this, 'Text3')" data-placeholder="Enter text here...">@Model.Text3</p>
+        <div class="image-wrapper">
+            <img src="@Model.ImageUrl3" class="editable-img" data-image-field="ImageUrl3"
+                onclick="openImageManager('ImageUrl3')">
+
+            <button type="button" class="edit-url-btn" onclick="openUrlEditor('ImageUrl3', '@Model.ImageUrl3')">Edit
+                URL</button>
+
+            <input type="hidden" id="ImageUrl3" name="ImageUrl3" value="@Model.ImageUrl3">
+        </div>
+    </article>
+
+    <div class="poster-bot">
+        <button class="input button" type="button" onclick="submitPoster()">Save</button>
+        <button class="input button" type="button" onclick="openImageManager()">Open Image Manager</button>
         @{
             var formAction = ViewData["FormAction"] as string;
-            if (formAction == "EditPoster"){
-                <a class="button delete" asp-area="" asp-controller="Poster" asp-action="DeletePoster" asp-route-id=@Model.ID>Delete</a>
+            if (formAction == "EditPoster")
+            {
+                <a class="button delete" asp-controller="Poster" asp-action="DeletePoster" asp-route-id="@Model.ID">Delete</a>
             }
         }
     </div>
-</div>
+</section>
+
+<!-- Hidden Form -->
+<form id="posterForm" method="post" asp-controller="Poster" asp-action="@ViewData["FormAction"]" style="display:none;">
+    @Html.HiddenFor(m => m.ID)
+    @Html.HiddenFor(m => m.CreateDate)
+    @Html.HiddenFor(m => m.EditDate)
+    @Html.HiddenFor(m => m.Author)
+
+    <input type="hidden" name="Title" id="Title" value="@Model.Title" />
+    <input type="hidden" name="Sub1" id="Sub1" value="@Model.Sub1" />
+    <input type="hidden" name="Text1" id="Text1" value="@Model.Text1" />
+    <input type="hidden" name="ImageUrl1" id="ImageUrl1" value="@Model.ImageUrl1" />
+    <input type="hidden" name="Sub2" id="Sub2" value="@Model.Sub2" />
+    <input type="hidden" name="Text2" id="Text2" value="@Model.Text2" />
+    <input type="hidden" name="ImageUrl2" id="ImageUrl2" value="@Model.ImageUrl2" />
+    <input type="hidden" name="Sub3" id="Sub3" value="@Model.Sub3" />
+    <input type="hidden" name="Text3" id="Text3" value="@Model.Text3" />
+    <input type="hidden" name="ImageUrl3" id="ImageUrl3" value="@Model.ImageUrl3" />
 </form>
 
-<!-- Modal for Image Manager -->
-<div id="imageManagerModal" class="custom-modal">
+<!-- Image Modal -->
+<div id="imageManagerModal" class="custom-modal" style="display:none;">
     <div class="modal-content">
         <div class="modal-header">
             <span class="close-btn" onclick="closeImageManager()">&times;</span>
@@ -82,17 +92,76 @@
     </div>
 </div>
 
+<!-- URL Modal -->
+<div id="urlModal" class="custom-modal" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close-btn" onclick="closeUrlEditor()">&times;</span>
+        </div>
+        <main>
+            <label for="newImageUrl">Enter image URL:</label>
+            <input type="url" id="newImageUrl" />
+            <input type="hidden" id="urlTargetField">
+            <div>
+                <button type="button" onclick="applyImageUrl()">Apply</button>
+            </div>
+        </main>
+    </div>
+</div>
+
 
 @section Scripts {
     <script>
-        function openImageManager() {
-            // Save the input field we want to update
-            document.getElementById('imageManagerFrame').src = '/Home/ViewImages'; // or your manager URL
-            document.getElementById('imageManagerModal').style.display = 'block';
+        let currentImageField = "";
+
+        function updateModel(el, field) {
+            const hidden = document.getElementById(field);
+            if (hidden) hidden.value = el.innerText.trim();
+        }
+
+        function submitPoster() {
+            document.getElementById("posterForm").submit();
+        }
+
+        function openImageManager(fieldName = "") {
+            currentImageField = fieldName;
+            document.getElementById("imageManagerFrame").src = "/Home/ViewImages";
+            document.getElementById("imageManagerModal").style.display = "block";
         }
 
         function closeImageManager() {
-            document.getElementById('imageManagerModal').style.display = 'none';
+            document.getElementById("imageManagerModal").style.display = "none";
         }
+
+        // Called by iframe when user picks an image
+        function setImageUrl(url) {
+            if (!currentImageField) return;
+            document.getElementById(currentImageField).value = url;
+            const img = document.querySelector(`img[data-image-field="${currentImageField}"]`);
+            if (img) img.src = url;
+            closeImageManager();
+        }
+        
+        function openUrlEditor(fieldId, currentUrl) {
+            document.getElementById('urlTargetField').value = fieldId;
+            document.getElementById('newImageUrl').value = currentUrl;
+            document.getElementById('urlModal').style.display = 'block';
+        }
+
+        function closeUrlEditor() {
+            document.getElementById('urlModal').style.display = 'none';
+        }
+
+        function applyImageUrl() {
+            const fieldId = document.getElementById('urlTargetField').value;
+            const newUrl = document.getElementById('newImageUrl').value;
+
+            document.getElementById(fieldId).value = newUrl;
+            const img = document.querySelector(`img[data-image-field='${fieldId}']`);
+            if (img) img.src = newUrl;
+
+            closeUrlEditor();
+        }
+
     </script>
 }

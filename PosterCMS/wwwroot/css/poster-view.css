@@ -1,0 +1,106 @@
+page{
+    size: A4 portrait;
+}
+*{
+    margin: 0mm;
+    padding: 0mm;
+    box-sizing: border-box;
+}
+.home, main{
+    margin: 0mm;
+    padding: 0mm;
+}
+body {
+    margin: 30mm;
+    margin-top: 120mm;
+    font-family: Arial, Helvetica, sans-serif;
+}
+header, .poster-bot{
+    display: none;
+}
+main > h1{
+    position: absolute;
+    top: 60mm;
+    left: 28mm;
+    z-index: 10;
+    background-color: #FFFFFF;
+    /* border-radius: 2mm; */
+    padding: 0mm 2mm;
+    font-size: 16mm;
+}
+article:first-of-type > img:first-of-type{
+    position: absolute;
+    top: 0mm;
+    left: 0mm;
+    width: 210mm;
+    height: 100mm;
+    overflow: hidden;
+    object-fit: cover;
+    border-radius: 0mm;
+}
+article:first-of-type > p:first-of-type{
+    column-count: 3;
+    grid-column: span 3;
+    width: 152mm;
+}
+article:first-of-type > h1:first-of-type{
+    grid-column: span 3;
+    width: 152mm;
+}
+article:nth-of-type(2) > img{
+    grid-column-start: 3;
+    grid-row-start: 2;
+}
+article:nth-of-type(2) > p,
+article:nth-of-type(2) > h1{
+    grid-column-start: 1;
+}
+article:nth-of-type(3) > img{
+    grid-column-start: 1;
+    grid-row-start: 2;
+}
+article:nth-of-type(3) > p,
+article:nth-of-type(3) > h1{
+    grid-column-start: 2;
+}
+article{
+    display: grid;
+    grid-template-columns: 48mm 48mm 48mm;
+    margin: 0mm;
+    margin-bottom: 8mm;
+    padding: 0mm;
+    width: 152mm;
+    column-gap: 4mm;
+    height: 43mm;
+    align-items: start;
+}
+article > h1 {
+    margin: 0mm;
+    padding: 0mm;
+    grid-column: span 2;
+    font-size: 4mm;
+    height: 6mm;
+    width: 100mm;
+}
+article > p{
+    margin: 0mm;
+    padding: 0mm;
+    column-count: 2;
+    grid-column: span 2;
+    height: 37mm;
+    width: 100mm;
+    column-gap: 4mm;
+    font-size: 3.12mm;
+    column-fill: auto;
+}
+article > img{
+    margin: 0mm;
+    padding: 0mm;
+    grid-column: span 1;
+    height: 37mm;
+    width: 48mm;
+    object-fit: cover;
+    overflow:hidden;
+    align-self: start;
+    /* border-radius: 2mm; */
+}

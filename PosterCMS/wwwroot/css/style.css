@@ -73,6 +73,7 @@ main {
 main>h1 {
     margin: 86px 16px 86px 0px;
     font-size: 4rem;
+    width: 100%;
 }
 
 article>img {
@@ -146,7 +147,7 @@ form input[type="submit"],
     transition: background-color 0.3s ease;
     margin: 0px 4px 0px 0px;
     color: var(--color-bright-background);
-    border-radius: 4px;
+    /* border-radius: 4px; */
 }
 
 form input[type="submit"]:hover,
@@ -181,11 +182,12 @@ form input[type="submit"]:hover,
     margin-bottom: 78px;
 }
 
-.poster article img {
+.poster article img,
+.poster article .image-wrapper{
     grid-area: img;
     width: 300px;
     height: 350px;
-    margin-right: 58px;
+    margin: 0px 58px 0px 0px;
 }
 
 .poster article h1 {
@@ -437,4 +439,43 @@ form input[type="submit"]:hover,
     flex: 1;
     width: 100%;
     border: none;
+}
+
+
+.image-wrapper {
+    position: relative;
+    padding: 0px;
+}
+
+.image-wrapper img{
+    width: 300px;
+    height: 350px;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.edit-url-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: none;
+    padding: 2px 6px;
+    font-size: 0.8em;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.image-wrapper:hover .edit-url-btn {
+    display: inline-block;
+}
+
+[contenteditable="true"] {
+    outline: none;
+    cursor: text;
+}
+
+[contenteditable="true"]:empty::before,
+[contenteditable="true"]:has(br:only-child)::before {
+    content: attr(data-placeholder);
+    color: var(--color-secondary);
 }

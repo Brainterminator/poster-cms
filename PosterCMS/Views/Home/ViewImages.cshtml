@@ -20,7 +20,7 @@ else
             <article class="poster-preview">
                 <a href="@Url.Action("DeleteImage", "Home", new { path = "uploads/" + fileName })"><img class="rm-img-btn"
                         src="/icons/delete.svg"></a>
-                <img src="@imageUrl">
+                <img src="@imageUrl" onclick="selectImage('@imageUrl')" style="cursor: pointer;">
                 <div class="poster-labels">
                     <p class="img-name">@fileName</p>
                     <div class="cpy-btn" onclick="copyToClipboard('@imageUrl')">
@@ -41,6 +41,11 @@ else
             }, (err) => {
                 alert("Failed to copy: " + err);
             });
+        }
+        function selectImage(url) {
+            if (window.parent && window.parent.setImageUrl) {
+                window.parent.setImageUrl(url);
+            }
         }
     </script>
 }

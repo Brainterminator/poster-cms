@@ -215,8 +215,7 @@ form input[type=submit]:hover,
 
 .poster-grid article img {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  /*margin: 0px 24px 24px 0px;*/
-  transition: 0.3s ease;
+  transition: width 0.3s ease, padding 0.3s ease;
   width: 300px;
 }
 
@@ -236,6 +235,7 @@ form input[type=submit]:hover,
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   width: 300px;
+  transition: width 0.3s ease, padding 0.3s ease;
 }
 
 .a3 .poster-labels {
@@ -291,7 +291,7 @@ form input[type=submit]:hover,
   color: var(--color-secondary);
   display: flex;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: 0.3s ease;
+  transition: width 0.3s ease, padding 0.3s ease;
   justify-content: center;
   place-items: center;
 }
@@ -486,32 +486,39 @@ form input[type=submit]:hover,
 
 .embedded-scope {
   justify-self: center;
-  margin: 86px;
   height: 297mm;
+  margin: 86px;
   position: relative;
   padding: 30mm;
   padding-top: 120mm;
   background-color: var(--color-bright-background);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transform-origin: top center;
+  transition: width 0.3s ease, transform 0.3s ease, padding 0.3s ease;
 }
-.embedded-scope page {
+.embedded-scope.portrait {
+  padding: 30mm;
+  padding-top: 120mm;
+}
+.embedded-scope.portrait page {
   size: A4 portrait;
 }
-.embedded-scope * {
+.embedded-scope.portrait * {
   margin: 0mm;
   padding: 0mm;
   box-sizing: border-box;
+  transition: width 0.3s ease, transform 0.3s ease, padding 0.3s ease;
 }
-.embedded-scope .home, .embedded-scope main {
+.embedded-scope.portrait .home, .embedded-scope.portrait main {
   margin: 0mm;
   padding: 0mm;
 }
-.embedded-scope body {
+.embedded-scope.portrait body {
   margin: 30mm;
   margin-top: 120mm;
   font-family: Arial, Helvetica, sans-serif;
 }
-.embedded-scope main > h1 {
+.embedded-scope.portrait main > h1 {
   position: absolute;
   top: 60mm;
   left: 28mm;
@@ -522,9 +529,9 @@ form input[type=submit]:hover,
   font-size: 16mm;
   width: auto;
 }
-.embedded-scope article:first-of-type > .image-wrapper:first-of-type > img,
-.embedded-scope article:first-of-type > .image-wrapper:first-of-type,
-.embedded-scope article:first-of-type > img {
+.embedded-scope.portrait article:first-of-type > .image-wrapper:first-of-type > img,
+.embedded-scope.portrait article:first-of-type > .image-wrapper:first-of-type,
+.embedded-scope.portrait article:first-of-type > img {
   position: absolute;
   top: 0mm;
   left: 0mm;
@@ -534,36 +541,36 @@ form input[type=submit]:hover,
   object-fit: cover;
   border-radius: 0mm;
 }
-.embedded-scope article:first-of-type > p:first-of-type {
+.embedded-scope.portrait article:first-of-type > p:first-of-type {
   column-count: 3;
   grid-column: span 3;
   width: 152mm;
 }
-.embedded-scope article:first-of-type > h1:first-of-type {
+.embedded-scope.portrait article:first-of-type > h1:first-of-type {
   grid-column: span 3;
   width: 152mm;
 }
-.embedded-scope article:nth-of-type(2) > .image-wrapper > img,
-.embedded-scope article:nth-of-type(2) > .image-wrapper,
-.embedded-scope article:nth-of-type(2) > img {
+.embedded-scope.portrait article:nth-of-type(2) > .image-wrapper > img,
+.embedded-scope.portrait article:nth-of-type(2) > .image-wrapper,
+.embedded-scope.portrait article:nth-of-type(2) > img {
   grid-column-start: 3;
   grid-row-start: 2;
 }
-.embedded-scope article:nth-of-type(2) > p,
-.embedded-scope article:nth-of-type(2) > h1 {
+.embedded-scope.portrait article:nth-of-type(2) > p,
+.embedded-scope.portrait article:nth-of-type(2) > h1 {
   grid-column-start: 1;
 }
-.embedded-scope article:nth-of-type(3) > .image-wrapper > img,
-.embedded-scope article:nth-of-type(3) > .image-wrapper,
-.embedded-scope article:nth-of-type(3) > img {
+.embedded-scope.portrait article:nth-of-type(3) > .image-wrapper > img,
+.embedded-scope.portrait article:nth-of-type(3) > .image-wrapper,
+.embedded-scope.portrait article:nth-of-type(3) > img {
   grid-column-start: 1;
   grid-row-start: 2;
 }
-.embedded-scope article:nth-of-type(3) > p,
-.embedded-scope article:nth-of-type(3) > h1 {
+.embedded-scope.portrait article:nth-of-type(3) > p,
+.embedded-scope.portrait article:nth-of-type(3) > h1 {
   grid-column-start: 2;
 }
-.embedded-scope article {
+.embedded-scope.portrait article {
   display: grid;
   grid-template-columns: 48mm 48mm 48mm;
   margin: 0mm;
@@ -574,7 +581,7 @@ form input[type=submit]:hover,
   height: 43mm;
   align-items: start;
 }
-.embedded-scope article > h1 {
+.embedded-scope.portrait article > h1 {
   margin: 0mm;
   padding: 0mm;
   grid-column: span 2;
@@ -582,7 +589,7 @@ form input[type=submit]:hover,
   height: 6mm;
   width: 100mm;
 }
-.embedded-scope article > p {
+.embedded-scope.portrait article > p {
   margin: 0mm;
   padding: 0mm;
   column-count: 2;
@@ -593,9 +600,9 @@ form input[type=submit]:hover,
   font-size: 3.12mm;
   column-fill: auto;
 }
-.embedded-scope article > .image-wrapper > img,
-.embedded-scope article > .image-wrapper,
-.embedded-scope article > img {
+.embedded-scope.portrait article > .image-wrapper > img,
+.embedded-scope.portrait article > .image-wrapper,
+.embedded-scope.portrait article > img {
   margin: 0mm;
   padding: 0mm;
   grid-column: span 1;
@@ -606,45 +613,38 @@ form input[type=submit]:hover,
   align-self: start;
   /* border-radius: 2mm; */
 }
-.embedded-scope [contenteditable=true] {
+.embedded-scope.portrait [contenteditable=true] {
   outline: none;
   cursor: text;
 }
-.embedded-scope [contenteditable=true]:empty::before,
-.embedded-scope [contenteditable=true]:has(br:only-child)::before {
+.embedded-scope.portrait [contenteditable=true]:empty::before,
+.embedded-scope.portrait [contenteditable=true]:has(br:only-child)::before {
   content: attr(data-placeholder);
   color: var(--color-secondary);
 }
-
-.embedded-scope-landscape {
-  justify-self: center;
-  margin: -194.6299212598px;
-  height: 297mm;
-  position: relative;
+.embedded-scope.landscape {
   padding: 60mm;
   padding-top: 120mm;
-  background-color: var(--color-bright-background);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  scale: 0.5;
 }
-.embedded-scope-landscape page {
+.embedded-scope.landscape page {
   size: A3 horizontal;
 }
-.embedded-scope-landscape * {
+.embedded-scope.landscape * {
   margin: 0mm;
   padding: 0mm;
   box-sizing: border-box;
+  transition: width 0.3s ease, transform 0.3s ease, padding 0.3s ease;
 }
-.embedded-scope-landscape .home, .embedded-scope-landscape main {
+.embedded-scope.landscape .home, .embedded-scope.landscape main {
   margin: 0mm;
   padding: 0mm;
 }
-.embedded-scope-landscape body {
+.embedded-scope.landscape body {
   margin: 60mm;
   margin-top: 120mm;
   font-family: Arial, Helvetica, sans-serif;
 }
-.embedded-scope-landscape main > h1 {
+.embedded-scope.landscape main > h1 {
   position: absolute;
   top: 60mm;
   left: 56mm;
@@ -655,9 +655,9 @@ form input[type=submit]:hover,
   font-size: 16mm;
   width: auto;
 }
-.embedded-scope-landscape article:first-of-type > .image-wrapper:first-of-type > img,
-.embedded-scope-landscape article:first-of-type > .image-wrapper:first-of-type,
-.embedded-scope-landscape article:first-of-type > img {
+.embedded-scope.landscape article:first-of-type > .image-wrapper:first-of-type > img,
+.embedded-scope.landscape article:first-of-type > .image-wrapper:first-of-type,
+.embedded-scope.landscape article:first-of-type > img {
   position: absolute;
   top: 0mm;
   left: 0mm;
@@ -667,36 +667,36 @@ form input[type=submit]:hover,
   object-fit: cover;
   border-radius: 0mm;
 }
-.embedded-scope-landscape article:first-of-type > p:first-of-type {
+.embedded-scope.landscape article:first-of-type > p:first-of-type {
   column-count: 3;
   grid-column: span 3;
   width: 304mm;
 }
-.embedded-scope-landscape article:first-of-type > h1:first-of-type {
+.embedded-scope.landscape article:first-of-type > h1:first-of-type {
   grid-column: span 3;
   width: 304mm;
 }
-.embedded-scope-landscape article:nth-of-type(2) > .image-wrapper > img,
-.embedded-scope-landscape article:nth-of-type(2) > .image-wrapper,
-.embedded-scope-landscape article:nth-of-type(2) > img {
+.embedded-scope.landscape article:nth-of-type(2) > .image-wrapper > img,
+.embedded-scope.landscape article:nth-of-type(2) > .image-wrapper,
+.embedded-scope.landscape article:nth-of-type(2) > img {
   grid-column-start: 3;
   grid-row-start: 2;
 }
-.embedded-scope-landscape article:nth-of-type(2) > p,
-.embedded-scope-landscape article:nth-of-type(2) > h1 {
+.embedded-scope.landscape article:nth-of-type(2) > p,
+.embedded-scope.landscape article:nth-of-type(2) > h1 {
   grid-column-start: 1;
 }
-.embedded-scope-landscape article:nth-of-type(3) > .image-wrapper > img,
-.embedded-scope-landscape article:nth-of-type(3) > .image-wrapper,
-.embedded-scope-landscape article:nth-of-type(3) > img {
+.embedded-scope.landscape article:nth-of-type(3) > .image-wrapper > img,
+.embedded-scope.landscape article:nth-of-type(3) > .image-wrapper,
+.embedded-scope.landscape article:nth-of-type(3) > img {
   grid-column-start: 1;
   grid-row-start: 2;
 }
-.embedded-scope-landscape article:nth-of-type(3) > p,
-.embedded-scope-landscape article:nth-of-type(3) > h1 {
+.embedded-scope.landscape article:nth-of-type(3) > p,
+.embedded-scope.landscape article:nth-of-type(3) > h1 {
   grid-column-start: 2;
 }
-.embedded-scope-landscape article {
+.embedded-scope.landscape article {
   display: grid;
   grid-template-columns: 96mm 96mm 96mm;
   margin: 0mm;
@@ -707,7 +707,7 @@ form input[type=submit]:hover,
   height: 43mm;
   align-items: start;
 }
-.embedded-scope-landscape article > h1 {
+.embedded-scope.landscape article > h1 {
   margin: 0mm;
   padding: 0mm;
   grid-column: span 2;
@@ -715,7 +715,7 @@ form input[type=submit]:hover,
   height: 6mm;
   width: 200mm;
 }
-.embedded-scope-landscape article > p {
+.embedded-scope.landscape article > p {
   margin: 0mm;
   padding: 0mm;
   column-count: 2;
@@ -726,9 +726,9 @@ form input[type=submit]:hover,
   font-size: 4.37mm;
   column-fill: auto;
 }
-.embedded-scope-landscape article > .image-wrapper > img,
-.embedded-scope-landscape article > .image-wrapper,
-.embedded-scope-landscape article > img {
+.embedded-scope.landscape article > .image-wrapper > img,
+.embedded-scope.landscape article > .image-wrapper,
+.embedded-scope.landscape article > img {
   margin: 0mm;
   padding: 0mm;
   grid-column: span 1;

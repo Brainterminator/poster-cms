@@ -20,7 +20,7 @@
     <header>
         <a asp-area="" asp-controller="Home" asp-action="Index">PosterCMS</a>
         <nav>
-            <div class="din-switch @(pagesize == "A3" ? "flipped" : "")" onclick="togglePageSize(this)">
+            <div id="pageSizeToggle" class="din-switch @(pagesize == "A3" ? "flipped" : "")">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
                         <div class="page">A4</div>
@@ -47,16 +47,28 @@
     </div>
 
     <script>
-        function togglePageSize(el) {
-            el.classList.toggle('flipped');
+        document.addEventListener('DOMContentLoaded', function () {
+            const pageSizeToggle = document.getElementById('pageSizeToggle');
+            if (!pageSizeToggle) return;
 
-            // Determine the selected value
-            const isFlipped = el.classList.contains('flipped');
-            const pageSize = isFlipped ? 'A3' : 'A4';
+            pageSizeToggle.addEventListener('click', function () {
+                // 1. Animate the button flip
+                this.classList.toggle('flipped');
 
-            // Set cookie (expires in 30 days)
-            document.cookie = `PageSize=${pageSize}; path=/; max-age=${60 * 60 * 24 * 30}`;
-        }
+                // 2. Determine the new page size
+                const isA3 = this.classList.contains('flipped');
+                const newPageSize = isA3 ? 'A3' : 'A4';
+
+                // 3. Set the cookie
+                document.cookie = `PageSize=${newPageSize}; path=/; max-age=2592000; SameSite=Lax`;
+
+                // 4. Broadcast a custom event with the new page size
+                const event = new CustomEvent('pageSizeChanged', {
+                    detail: { pageSize: newPageSize }
+                });
+                document.dispatchEvent(event);
+            });
+        });
     </script>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

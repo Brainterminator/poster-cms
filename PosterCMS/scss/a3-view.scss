@@ -5,6 +5,7 @@ page{
     margin: 0mm;
     padding: 0mm;
     box-sizing: border-box;
+    transition: width 0.3s ease, transform 0.3s ease, padding 0.3s ease;
 }
 .home, main{
     margin: 0mm;

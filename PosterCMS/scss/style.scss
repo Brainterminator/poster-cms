@@ -229,8 +229,7 @@ form input[type="submit"]:hover,
 
 .poster-grid article img {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    /*margin: 0px 24px 24px 0px;*/
-    transition: 0.3s ease;
+    transition: width 0.3s ease, padding 0.3s ease;
     width: 300px;
 }
 
@@ -250,6 +249,7 @@ form input[type="submit"]:hover,
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
     width: 300px;
+    transition: width 0.3s ease, padding 0.3s ease;
 }
 
 .a3 .poster-labels {
@@ -305,7 +305,7 @@ form input[type="submit"]:hover,
     color: var(--color-secondary);
     display: flex;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: 0.3s ease;
+    transition: width 0.3s ease, padding 0.3s ease;
     justify-content: center;
     place-items: center;
 }
@@ -504,29 +504,35 @@ form input[type="submit"]:hover,
 
 
 .embedded-scope {
-    justify-self: center;
-    margin: 86px;
-    height: 297mm;
-    position: relative;
+  // Core visual style
+  justify-self: center;
+  height: 297mm;
+  margin: 86px;
+  position: relative;
+  padding: 30mm;
+  padding-top: 120mm;
+  background-color: var(--color-bright-background);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transform-origin: top center;
+  
+  //transform: scale(1);
+  transition: width 0.3s ease, transform 0.3s ease, padding 0.3s ease;
+
+  &.portrait {
+    //transform: scale(1);
     padding: 30mm;
     padding-top: 120mm;
-    background-color: var(--color-bright-background);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     @import 'a4-view';
-}
+  }
 
-.embedded-scope-landscape {
-    justify-self: center;
-    margin: calc(86px - 74.25mm);
-    height: 297mm;
-    position: relative;
+  &.landscape {
+    //transform: scale(0.7); // Only scale X to enhance the visual width effect
     padding: 60mm;
     padding-top: 120mm;
-    background-color: var(--color-bright-background);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    scale: 0.5;
     @import 'a3-view';
+  }
 }
+
 
 
 

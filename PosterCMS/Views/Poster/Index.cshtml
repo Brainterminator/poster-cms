@@ -6,7 +6,7 @@
 }
 
 @model PosterModel
-<div class="embedded-scope@(pagesize == "A3" ? "-landscape" : "")">
+<div class="embedded-scope @(pagesize == "A3" ? "landscape" : "portrait")">
 
     <body>
         <main>
@@ -37,3 +37,23 @@
     </div>
     <a class="button" asp-area="" asp-controller="Poster" asp-action="Edit" asp-route-id=@Model.ID>Edit</a>
 </div>
+
+@section Scripts {
+<script>
+    document.addEventListener('pageSizeChanged', function(e) {
+        const newPageSize = e.detail.pageSize;
+        const scope = document.querySelector('.embedded-scope');
+
+        if (!scope) return;
+        
+        // Switch between the two layout classes
+        if (newPageSize === 'A3') {
+            scope.classList.add('landscape');
+            scope.classList.remove('portrait');
+        } else {
+            scope.classList.remove('landscape');
+            scope.classList.add('portrait');
+        }
+    });
+</script>
+}

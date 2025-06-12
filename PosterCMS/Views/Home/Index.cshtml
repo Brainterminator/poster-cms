@@ -21,3 +21,33 @@
         }
     }
 </section>
+
+@section Scripts {
+<script>
+    document.addEventListener('pageSizeChanged', function(e) {
+        const newPageSize = e.detail.pageSize;
+        const posterGrid = document.querySelector('.poster-grid');
+        
+        if (!posterGrid) return;
+
+        // Toggle the class to animate the grid size
+        if (newPageSize === 'A3') {
+            posterGrid.classList.add('a3');
+        } else {
+            posterGrid.classList.remove('a3');
+        }
+
+        // Find all poster images and update their source
+        const images = posterGrid.querySelectorAll('.poster-preview img');
+        images.forEach(img => {
+            if (newPageSize === 'A3') {
+                // Change A4 source to A3 source
+                img.src = img.src.replace('-A4-portrait.jpg', '-A3-landscape.jpg');
+            } else {
+                // Change A3 source to A4 source
+                img.src = img.src.replace('-A3-landscape.jpg', '-A4-portrait.jpg');
+            }
+        });
+    });
+</script>
+}

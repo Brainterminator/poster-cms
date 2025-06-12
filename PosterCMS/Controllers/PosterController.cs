@@ -51,7 +51,8 @@ namespace PosterCMS.Controllers
             _context.Add(poster);
             _context.SaveChanges();
 
-            ContentManager.SaveImage(await ContentManager.GenerateA4Thumbnail("http://localhost:5299/Poster/Index/" + poster.ID), "thumbnails/" + poster.ID + ".jpg");
+            ContentManager.SaveImage(await ContentManager.GenerateA4Thumbnail("http://localhost:5299/Poster/Index/" + poster.ID), "thumbnails/" + poster.ID + "-A4-portrait.jpg");
+            ContentManager.SaveImage(await ContentManager.GenerateA3Thumbnail("http://localhost:5299/Poster/Index/" + poster.ID), "thumbnails/" + poster.ID + "-A3-landscape.jpg");
 
             return RedirectToAction("Index", new { id = poster.ID });
         }
@@ -70,7 +71,8 @@ namespace PosterCMS.Controllers
             _context.Update(poster);
             _context.SaveChanges();
 
-            ContentManager.SaveImage(await ContentManager.GenerateA4Thumbnail("http://localhost:5299/Poster/Index/" + poster.ID), "thumbnails/" + poster.ID + ".jpg");
+            ContentManager.SaveImage(await ContentManager.GenerateA4Thumbnail("http://localhost:5299/Poster/Index/" + poster.ID), "thumbnails/" + poster.ID + "-A4-portrait.jpg");
+            ContentManager.SaveImage(await ContentManager.GenerateA3Thumbnail("http://localhost:5299/Poster/Index/" + poster.ID), "thumbnails/" + poster.ID + "-A3-landscape.jpg");
 
             return RedirectToAction("Index", new { id = poster.ID });
         }

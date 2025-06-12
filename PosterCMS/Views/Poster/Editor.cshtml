@@ -1,67 +1,83 @@
 ﻿@model PosterModel
 @{
     ViewData["Title"] = "Editor";
+    var pagesize = Context.Request.Cookies["PageSize"];
 }
+<div class="embedded-scope@(pagesize == "A3" ? "-landscape" : "")">
 
-<h1 contenteditable="true" oninput="updateModel(this, 'Title')" data-placeholder="Title...">@Model.Title</h1>
-
-<section class="poster">
-    <article>
-        <h1 contenteditable="true" oninput="updateModel(this, 'Sub1')" data-placeholder="Subtitle...">@Model.Sub1</h1>
-        <p contenteditable="true" oninput="updateModel(this, 'Text1')" data-placeholder="Enter text here...">@Model.Text1</p>
-        <div class="image-wrapper">
-            <img src="@Model.ImageUrl1" class="editable-img" data-image-field="ImageUrl1"
-                onclick="openImageManager('ImageUrl1')">
-
-            <button type="button" class="edit-url-btn" onclick="openUrlEditor('ImageUrl1', '@Model.ImageUrl1')">Edit
-                URL</button>
-
-            <input type="hidden" id="ImageUrl1" name="ImageUrl1" value="@Model.ImageUrl1">
-        </div>
+    <body>
+        <main>
 
 
-    </article>
+            <h1 contenteditable="true" oninput="updateModel(this, 'Title')" data-placeholder="Title...">@Model.Title
+            </h1>
 
-    <article>
-        <h1 contenteditable="true" oninput="updateModel(this, 'Sub2')" data-placeholder="Subtitle...">@Model.Sub2</h1>
-        <p contenteditable="true" oninput="updateModel(this, 'Text2')" data-placeholder="Enter text here...">@Model.Text2</p>
-        <div class="image-wrapper">
-            <img src="@Model.ImageUrl2" class="editable-img" data-image-field="ImageUrl2"
-                onclick="openImageManager('ImageUrl2')">
+            <article>
+                <h1 contenteditable="true" oninput="updateModel(this, 'Sub1')" data-placeholder="Subtitle...">
+                    @Model.Sub1</h1>
+                <p contenteditable="true" oninput="updateModel(this, 'Text1')" data-placeholder="Enter text here...">
+                    @Model.Text1</p>
+                <div class="image-wrapper">
+                    <img src="@Model.ImageUrl1" class="editable-img" data-image-field="ImageUrl1"
+                        onclick="openImageManager('ImageUrl1')">
 
-            <button type="button" class="edit-url-btn" onclick="openUrlEditor('ImageUrl2', '@Model.ImageUrl2')">Edit
-                URL</button>
+                    <button type="button" class="edit-url-btn"
+                        onclick="openUrlEditor('ImageUrl1', '@Model.ImageUrl1')">Edit
+                        URL</button>
 
-            <input type="hidden" id="ImageUrl2" name="ImageUrl2" value="@Model.ImageUrl2">
-        </div>
-    </article>
+                    <input type="hidden" id="ImageUrl1" name="ImageUrl1" value="@Model.ImageUrl1">
+                </div>
 
-    <article>
-        <h1 contenteditable="true" oninput="updateModel(this, 'Sub3')" data-placeholder="Subtitle...">@Model.Sub3</h1>
-        <p contenteditable="true" oninput="updateModel(this, 'Text3')" data-placeholder="Enter text here...">@Model.Text3</p>
-        <div class="image-wrapper">
-            <img src="@Model.ImageUrl3" class="editable-img" data-image-field="ImageUrl3"
-                onclick="openImageManager('ImageUrl3')">
 
-            <button type="button" class="edit-url-btn" onclick="openUrlEditor('ImageUrl3', '@Model.ImageUrl3')">Edit
-                URL</button>
+            </article>
 
-            <input type="hidden" id="ImageUrl3" name="ImageUrl3" value="@Model.ImageUrl3">
-        </div>
-    </article>
+            <article>
+                <h1 contenteditable="true" oninput="updateModel(this, 'Sub2')" data-placeholder="Subtitle...">
+                    @Model.Sub2</h1>
+                <p contenteditable="true" oninput="updateModel(this, 'Text2')" data-placeholder="Enter text here...">
+                    @Model.Text2</p>
+                <div class="image-wrapper">
+                    <img src="@Model.ImageUrl2" class="editable-img" data-image-field="ImageUrl2"
+                        onclick="openImageManager('ImageUrl2')">
 
-    <div class="poster-bot">
-        <button class="input button" type="button" onclick="submitPoster()">Save</button>
-        <button class="input button" type="button" onclick="openImageManager()">Open Image Manager</button>
-        @{
-            var formAction = ViewData["FormAction"] as string;
-            if (formAction == "EditPoster")
-            {
-                <a class="button delete" asp-controller="Poster" asp-action="DeletePoster" asp-route-id="@Model.ID">Delete</a>
-            }
+                    <button type="button" class="edit-url-btn"
+                        onclick="openUrlEditor('ImageUrl2', '@Model.ImageUrl2')">Edit
+                        URL</button>
+
+                    <input type="hidden" id="ImageUrl2" name="ImageUrl2" value="@Model.ImageUrl2">
+                </div>
+            </article>
+
+            <article>
+                <h1 contenteditable="true" oninput="updateModel(this, 'Sub3')" data-placeholder="Subtitle...">
+                    @Model.Sub3</h1>
+                <p contenteditable="true" oninput="updateModel(this, 'Text3')" data-placeholder="Enter text here...">
+                    @Model.Text3</p>
+                <div class="image-wrapper">
+                    <img src="@Model.ImageUrl3" class="editable-img" data-image-field="ImageUrl3"
+                        onclick="openImageManager('ImageUrl3')">
+
+                    <button type="button" class="edit-url-btn"
+                        onclick="openUrlEditor('ImageUrl3', '@Model.ImageUrl3')">Edit
+                        URL</button>
+
+                    <input type="hidden" id="ImageUrl3" name="ImageUrl3" value="@Model.ImageUrl3">
+                </div>
+            </article>
+        </main>
+    </body>
+</div>
+<div class="poster-bot">
+    <button class="input button" type="button" onclick="submitPoster()">Save</button>
+    <button class="input button" type="button" onclick="openImageManager()">Open Image Manager</button>
+    @{
+        var formAction = ViewData["FormAction"] as string;
+        if (formAction == "EditPoster")
+        {
+            <a class="button delete" asp-controller="Poster" asp-action="DeletePoster" asp-route-id="@Model.ID">Delete</a>
         }
-    </div>
-</section>
+    }
+</div>
 
 <!-- Hidden Form -->
 <form id="posterForm" method="post" asp-controller="Poster" asp-action="@ViewData["FormAction"]" style="display:none;">
@@ -141,7 +157,7 @@
             if (img) img.src = url;
             closeImageManager();
         }
-        
+
         function openUrlEditor(fieldId, currentUrl) {
             document.getElementById('urlTargetField').value = fieldId;
             document.getElementById('newImageUrl').value = currentUrl;

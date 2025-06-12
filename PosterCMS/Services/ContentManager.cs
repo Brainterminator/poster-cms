@@ -37,6 +37,31 @@ public class ContentManager
         });
     }
 
+    public static async Task<byte[]> GenerateA3Thumbnail(string url)
+    {
+        using var browser = await Puppeteer.LaunchAsync(new LaunchOptions
+        {
+            Headless = true
+        });
+        using var page = await browser.NewPageAsync();
+        await page.SetViewportAsync(new ViewPortOptions
+        {
+            Width = 1588,
+            Height = 1122
+        });
+
+        await page.SetCacheEnabledAsync(false);
+
+        await page.EmulateMediaTypeAsync(MediaType.Print);
+
+        await page.GoToAsync(url, WaitUntilNavigation.Load);
+        return await page.ScreenshotDataAsync(new ScreenshotOptions
+        {
+            Type = ScreenshotType.Jpeg,
+            Quality = 70
+        });
+    }
+
     public static void SaveImage(byte[] imageBytes, String path)
     {
         // Ensure the directory exists

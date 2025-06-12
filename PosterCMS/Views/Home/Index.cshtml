@@ -1,17 +1,18 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var pagesize = Context.Request.Cookies["PageSize"];
 }
 
 @model List<PosterModel>
 
 <h1>Posters</h1>
 
-<section class="poster-grid">
+<section class="poster-grid @(pagesize == "A3" ? "a3" : "")">
     <a class="button add-poster" asp-area="" asp-controller="Poster" asp-action="Create">+</a>
     @{
         foreach (var poster in Model){
             <article class="poster-preview">
-                <a asp-area="" asp-controller="Poster" asp-action="Index" asp-route-id=@poster.ID><img src="/thumbnails/@(poster.ID).jpg"></a>
+                <a asp-area="" asp-controller="Poster" asp-action="Index" asp-route-id=@poster.ID><img src="/thumbnails/@(poster.ID)@(pagesize == "A3" ? "-A3-landscape" : "-A4-portrait").jpg"></a>
                 <div class="poster-labels">
                     <a asp-area="" asp-controller="Poster" asp-action="Index" asp-route-id=@poster.ID>@poster.Title</a>
                     <a asp-area="" asp-controller="Poster" asp-action="Index" asp-route-id=@poster.ID><p class="time">@poster.EditDate.ToString().Split(' ')[0]</p></a>

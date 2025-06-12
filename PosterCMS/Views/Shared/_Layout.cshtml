@@ -1,6 +1,7 @@
 ﻿@{
     var email = Context.Request.Cookies["AuthEmail"];
     var isLoggedIn = !string.IsNullOrEmpty(email);
+    var pagesize = Context.Request.Cookies["PageSize"];
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +20,16 @@
     <header>
         <a asp-area="" asp-controller="Home" asp-action="Index">PosterCMS</a>
         <nav>
+            <div class="din-switch @(pagesize == "A3" ? "flipped" : "")" onclick="togglePageSize(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="page">A4</div>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="page">A3</div>
+                    </div>
+                </div>
+            </div>
             @if (isLoggedIn)
             {
                 <a asp-area="" asp-controller="Home" asp-action="Account">Account</a>
@@ -34,6 +45,20 @@
             @RenderBody()
         </main>
     </div>
+
+    <script>
+        function togglePageSize(el) {
+            el.classList.toggle('flipped');
+
+            // Determine the selected value
+            const isFlipped = el.classList.contains('flipped');
+            const pageSize = isFlipped ? 'A3' : 'A4';
+
+            // Set cookie (expires in 30 days)
+            document.cookie = `PageSize=${pageSize}; path=/; max-age=${60 * 60 * 24 * 30}`;
+        }
+    </script>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

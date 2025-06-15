@@ -24,7 +24,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        var Posters = _context.Posters.OrderByDescending(p => p.EditDate).ToList();
+        var Posters = _context.Posters.Where(p => p.Author == Request.Cookies["AuthEmail"]).OrderByDescending(p => p.EditDate).ToList();
         return View(Posters);
     }
 

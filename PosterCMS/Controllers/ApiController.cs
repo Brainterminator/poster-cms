@@ -18,7 +18,7 @@ namespace PosterCMS.Controllers
             _context = context;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
         public ActionResult<PosterModel> GetPoster(int id)
         {
             var poster = _context.Posters.Find(id);

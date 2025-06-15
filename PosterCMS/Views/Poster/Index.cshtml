@@ -29,11 +29,11 @@
         </main>
     </body>
 </div>
-<div class="poster-bot">
+<div class="poster-bot @(pagesize == "A3" ? "a3-page" : "a4-page")" id="poster-id">
     <div>
         <input type="button" value="Print" class="button" onclick="window.print();">
         <input type="button" value="Export" class="button"
-            onclick="window.location.href='/Poster/ExportPoster?id=@Model.ID'">
+            onclick="window.location.href='/Poster/ExportPoster@(pagesize == "A3" ? "A3" : "")?id=@Model.ID'">
     </div>
     <a class="button" asp-area="" asp-controller="Poster" asp-action="Edit" asp-route-id=@Model.ID>Edit</a>
 </div>
@@ -49,10 +49,14 @@
         // Switch between the two layout classes
         if (newPageSize === 'A3') {
             scope.classList.add('landscape');
+            scope.parentElement.lastElementChild.classList.add('a3-page');
             scope.classList.remove('portrait');
+            scope.parentElement.lastElementChild.classList.remove('a4-page');
         } else {
             scope.classList.remove('landscape');
+            scope.parentElement.lastElementChild.classList.add('a4-page');
             scope.classList.add('portrait');
+            scope.parentElement.lastElementChild.classList.remove('a3-page');
         }
     });
 </script>

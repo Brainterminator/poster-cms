@@ -214,7 +214,9 @@ form input[type=submit]:hover,
 .poster-bot {
   display: flex;
   justify-content: space-between;
+  transition: transform 0.3s ease, width 0.3s ease;
   margin-bottom: 42px;
+  justify-self: center;
 }
 
 .poster-grid {
@@ -751,6 +753,14 @@ form input[type=submit]:hover,
   /* border-radius: 2mm; */
 }
 
+.a3-page {
+  width: 420mm;
+}
+
+.a4-page {
+  width: 210mm;
+}
+
 .din-switch {
   width: 40px;
   height: 40px;
@@ -833,8 +843,8 @@ form input[type=submit]:hover,
   display: block;
   width: 0.8rem;
   height: 0.8rem;
-  border-left: 0.2rem solid #374151; /* dark gray */
-  border-bottom: 0.2rem solid #374151;
+  border-left: 0.2rem solid var(--color-secondary);
+  border-bottom: 0.2rem solid var(--color-secondary);
   transform: rotate(135deg);
   transition: transform 0.3s ease;
 }

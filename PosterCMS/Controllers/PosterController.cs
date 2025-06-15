@@ -93,5 +93,11 @@ namespace PosterCMS.Controllers
             var stream = await ContentManager.GeneratePDF(poster);
             return File(stream, "application/pdf", "poster-printout.pdf");
         }
+
+        public async Task<IActionResult> ExportPosterA3(PosterModel poster)
+        {
+            var stream = await ContentManager.GeneratePDFA3(poster);
+            return File(stream, "application/pdf", "poster-printout.pdf");
+        }
     }
 }

@@ -67,9 +67,8 @@
         </main>
     </body>
 </div>
-<div class="poster-bot">
+<div class="poster-bot @(pagesize == "A3" ? "a3-page" : "a4-page")">
     <button class="input button" type="button" onclick="submitPoster()">Save</button>
-    <button class="input button" type="button" onclick="openImageManager()">Open Image Manager</button>
     @{
         var formAction = ViewData["FormAction"] as string;
         if (formAction == "EditPoster")
@@ -137,10 +136,14 @@
             // Switch between the two layout classes
             if (newPageSize === 'A3') {
                 scope.classList.add('landscape');
+                scope.parentElement.children[1].classList.add('a3-page');
                 scope.classList.remove('portrait');
+                scope.parentElement.children[1].classList.remove('a4-page');
             } else {
                 scope.classList.remove('landscape');
+                scope.parentElement.children[1].classList.add('a4-page');
                 scope.classList.add('portrait');
+                scope.parentElement.children[1].classList.remove('a3-page');
             }
         });
         let currentImageField = "";

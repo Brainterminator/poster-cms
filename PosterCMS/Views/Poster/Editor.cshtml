@@ -21,7 +21,7 @@
                     <img src="@Model.ImageUrl1" class="editable-img" data-image-field="ImageUrl1"
                         onclick="openImageManager('ImageUrl1')">
 
-                    <button type="button" class="edit-url-btn"
+                    <button type="button" class="edit-url-btn button"
                         onclick="openUrlEditor('ImageUrl1', '@Model.ImageUrl1')">Edit
                         URL</button>
 
@@ -40,7 +40,7 @@
                     <img src="@Model.ImageUrl2" class="editable-img" data-image-field="ImageUrl2"
                         onclick="openImageManager('ImageUrl2')">
 
-                    <button type="button" class="edit-url-btn"
+                    <button type="button" class="edit-url-btn button"
                         onclick="openUrlEditor('ImageUrl2', '@Model.ImageUrl2')">Edit
                         URL</button>
 
@@ -57,7 +57,7 @@
                     <img src="@Model.ImageUrl3" class="editable-img" data-image-field="ImageUrl3"
                         onclick="openImageManager('ImageUrl3')">
 
-                    <button type="button" class="edit-url-btn"
+                    <button type="button" class="edit-url-btn button"
                         onclick="openUrlEditor('ImageUrl3', '@Model.ImageUrl3')">Edit
                         URL</button>
 
@@ -113,13 +113,20 @@
         <div class="modal-header">
             <span class="close-btn" onclick="closeUrlEditor()">&times;</span>
         </div>
-        <main>
-            <label for="newImageUrl">Enter image URL:</label>
-            <input type="url" id="newImageUrl" />
-            <input type="hidden" id="urlTargetField">
-            <div>
-                <button type="button" onclick="applyImageUrl()">Apply</button>
-            </div>
+        <main class="modal-body">
+            <h1>URL Editor</h1>
+            <form>
+                <input type="hidden" id="urlTargetField">
+                <div>
+                    <label for="newImageUrl">Enter image URL:</label>
+                    <input type="url" id="newImageUrl" />
+                </div>
+                <div>
+                    <div class="buttons">
+                        <button class="input button" type="button" onclick="applyImageUrl()">Apply</button>
+                    </div>
+                </div>
+            </form>
         </main>
     </div>
 </div>

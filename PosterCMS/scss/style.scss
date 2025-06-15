@@ -31,7 +31,7 @@ main>h1+a {
     vertical-align: middle;
 }
 
-body {
+body, .modal-body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: var(--color-light-background);
     color: var(--color-primary);
@@ -449,20 +449,21 @@ form input[type="submit"]:hover,
     width: 80%;
     height: 80%;
     margin: 5% auto;
-    background: #fff;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    background-color: var(--color-light-background);
 }
 
 .modal-header {
     padding: 10px;
-    background-color: var(--color-bright-background);
+    background-color: var(--color-header-background);
     /*background-color: #f0f0f0;*/
     /*border-bottom: 1px solid #ccc;*/
     display: flex;
     justify-content: right;
     align-items: center;
+    background: #fff;
 }
 
 .close-btn {
@@ -489,19 +490,28 @@ form input[type="submit"]:hover,
     overflow: hidden;
 }
 
-.edit-url-btn {
+.embedded-scope .edit-url-btn.button {
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 6px;
+    right: 6px;
     display: none;
-    padding: 2px 6px;
-    font-size: 0.8em;
-    cursor: pointer;
     z-index: 2;
+    font-size: 12px;
+    padding: 4px 6px;
+    background-color: var(--color-bright-background);
+    color: var(--color-secondary);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .image-wrapper:hover .edit-url-btn {
-    display: inline-block;
+    display: flex;
+}
+
+.embedded-scope .button.edit-url-btn:hover{
+    background-color: var(--color-light-background);
+    color: var(--color-primary);
 }
 
 [contenteditable="true"] {

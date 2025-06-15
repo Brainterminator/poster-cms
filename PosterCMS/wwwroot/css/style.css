@@ -77,6 +77,17 @@ main > h1 {
   width: 100%;
 }
 
+main > .headline {
+  margin: 86px 16px 86px 0px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.headline > h1 {
+  font-size: 4rem;
+}
+
 article > img {
   height: 300px;
   width: 200px;
@@ -801,6 +812,36 @@ form input[type=submit]:hover,
 .flip-card-back .page {
   width: 18px;
   height: 12px;
+}
+
+.sortable-ghost {
+  opacity: 0%;
+}
+
+#sortToggle {
+  width: 4rem;
+  height: 4rem;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#sortToggle::before {
+  content: "";
+  display: block;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-left: 0.2rem solid #374151; /* dark gray */
+  border-bottom: 0.2rem solid #374151;
+  transform: rotate(135deg);
+  transition: transform 0.3s ease;
+}
+
+/* Ascending: rotate arrow upward */
+#sortToggle.asc::before {
+  transform: rotate(315deg);
 }
 
 /*# sourceMappingURL=style.css.map */

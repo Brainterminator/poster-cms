@@ -4,18 +4,24 @@
 }
 
 @model List<PosterModel>
-
-<h1>Posters</h1>
+<div class="headline">
+    <h1>Posters</h1>
+    <div class="sortToggle" id="sortToggle"></div>
+</div>
 
 <section class="poster-grid @(pagesize == "A3" ? "a3" : "")">
     <a class="button add-poster" asp-area="" asp-controller="Poster" asp-action="Create">+</a>
     @{
-        foreach (var poster in Model){
-            <article class="poster-preview">
-                <a asp-area="" asp-controller="Poster" asp-action="Index" asp-route-id=@poster.ID><img src="/thumbnails/@(poster.ID)@(pagesize == "A3" ? "-A3-landscape" : "-A4-portrait").jpg"></a>
+        foreach (var poster in Model)
+        {
+            <article class="poster-preview" data-editdate="@poster.EditDate.ToString("s")">
+                <a asp-area="" asp-controller="Poster" asp-action="Index" asp-route-id=@poster.ID><img
+                        src="/thumbnails/@(poster.ID)@(pagesize == "A3" ? "-A3-landscape" : "-A4-portrait").jpg"></a>
                 <div class="poster-labels">
                     <a asp-area="" asp-controller="Poster" asp-action="Index" asp-route-id=@poster.ID>@poster.Title</a>
-                    <a asp-area="" asp-controller="Poster" asp-action="Index" asp-route-id=@poster.ID><p class="time">@poster.EditDate.ToString().Split(' ')[0]</p></a>
+                    <a asp-area="" asp-controller="Poster" asp-action="Index" asp-route-id=@poster.ID>
+                        <p class="time">@poster.EditDate.ToString().Split(' ')[0]</p>
+                    </a>
                 </div>
             </article>
         }
@@ -23,31 +29,66 @@
 </section>
 
 @section Scripts {
-<script>
-    document.addEventListener('pageSizeChanged', function(e) {
-        const newPageSize = e.detail.pageSize;
-        const posterGrid = document.querySelector('.poster-grid');
-        
-        if (!posterGrid) return;
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <script>
+        document.addEventListener('pageSizeChanged', function (e) {
+            const newPageSize = e.detail.pageSize;
+            const posterGrid = document.querySelector('.poster-grid');
 
-        // Toggle the class to animate the grid size
-        if (newPageSize === 'A3') {
-            posterGrid.classList.add('a3');
-        } else {
-            posterGrid.classList.remove('a3');
-        }
+            if (!posterGrid) return;
 
-        // Find all poster images and update their source
-        const images = posterGrid.querySelectorAll('.poster-preview img');
-        images.forEach(img => {
+            // Toggle the class to animate the grid size
             if (newPageSize === 'A3') {
-                // Change A4 source to A3 source
-                img.src = img.src.replace('-A4-portrait.jpg', '-A3-landscape.jpg');
+                posterGrid.classList.add('a3');
             } else {
-                // Change A3 source to A4 source
-                img.src = img.src.replace('-A3-landscape.jpg', '-A4-portrait.jpg');
+                posterGrid.classList.remove('a3');
+            }
+
+            // Find all poster images and update their source
+            const images = posterGrid.querySelectorAll('.poster-preview img');
+            images.forEach(img => {
+                if (newPageSize === 'A3') {
+                    // Change A4 source to A3 source
+                    img.src = img.src.replace('-A4-portrait.jpg', '-A3-landscape.jpg');
+                } else {
+                    // Change A3 source to A4 source
+                    img.src = img.src.replace('-A3-landscape.jpg', '-A4-portrait.jpg');
+                }
+            });
+        });
+
+        new Sortable(document.querySelector('.poster-grid'), {
+            animation: 150,
+            draggable: '.poster-preview', // Only allow .poster-preview to be reordered
+            filter: '.add-poster',        // Prevent .add-poster from being draggable or interactive
+            onMove: function (evt) {
+                // Prevent dropping *into* the .add-poster slot
+                return !evt.related.classList.contains('add-poster');
             }
         });
-    });
-</script>
+
+        let sortAscending = true;
+
+        document.getElementById('sortToggle').addEventListener('click', function () {
+            const posterGrid = document.querySelector('.poster-grid');
+            const posters = Array.from(posterGrid.querySelectorAll('.poster-preview'));
+
+            // Sort based on data-editdate
+            posters.sort((a, b) => {
+                const dateA = new Date(a.dataset.editdate);
+                const dateB = new Date(b.dataset.editdate);
+                return sortAscending ? dateA - dateB : dateB - dateA;
+            });
+
+            // Toggle direction
+            sortAscending = !sortAscending;
+            this.classList.toggle('asc');
+
+            // Re-append in new order, keeping .add-poster first
+            const addButton = posterGrid.querySelector('.add-poster');
+            posterGrid.innerHTML = '';
+            posterGrid.appendChild(addButton);
+            posters.forEach(p => posterGrid.appendChild(p));
+        });
+    </script>
 }

@@ -31,7 +31,8 @@ main>h1+a {
     vertical-align: middle;
 }
 
-body, .modal-body {
+body,
+.modal-body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: var(--color-light-background);
     color: var(--color-primary);
@@ -53,6 +54,7 @@ header>a {
     font-size: 0.8rem;
     /* font-weight: bold;*/
 }
+
 nav {
     display: flex;
     flex-direction: row;
@@ -75,19 +77,20 @@ main {
     margin: 16px 10% 16px 10%;
 }
 
-main>h1{
+main>h1 {
     margin: 86px 16px 86px 0px;
     font-size: 4rem;
     width: 100%;
 }
 
-main>.headline{
+main>.headline {
     margin: 86px 16px 86px 0px;
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
-.headline > h1{
+
+.headline>h1 {
     font-size: 4rem;
 }
 
@@ -164,6 +167,17 @@ form input[type="submit"],
     margin: 0px 4px 0px 0px;
     color: var(--color-bright-background);
     /* border-radius: 4px; */
+}
+
+form input[readonly] {
+    background-color: var(--color-light-background);
+    color: --color-secondary;
+    cursor: not-allowed;
+}
+
+form input[readonly]:focus {
+    border-color: var(--color-secondary);
+    outline: none;
 }
 
 form input[type="submit"]:hover,
@@ -247,7 +261,7 @@ form input[type="submit"]:hover,
 }
 
 .poster-grid.a3 article img {
-   width: 600px;
+    width: 600px;
 }
 
 .poster-grid article img:hover,
@@ -455,6 +469,11 @@ form input[type="submit"]:hover,
     background-color: var(--color-light-background);
 }
 
+.url-modal .modal-content{
+    height: 55%;
+    margin: 11.25% auto;
+}
+
 .modal-header {
     padding: 10px;
     background-color: var(--color-header-background);
@@ -509,7 +528,7 @@ form input[type="submit"]:hover,
     display: flex;
 }
 
-.embedded-scope .button.edit-url-btn:hover{
+.embedded-scope .button.edit-url-btn:hover {
     background-color: var(--color-light-background);
     color: var(--color-primary);
 }
@@ -527,40 +546,40 @@ form input[type="submit"]:hover,
 
 
 .embedded-scope {
-  // Core visual style
-  justify-self: center;
-  height: 297mm;
-  margin: 86px;
-  position: relative;
-  padding: 30mm;
-  padding-top: 120mm;
-  background-color: var(--color-bright-background);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transform-origin: top center;
-  
-  //transform: scale(1);
-  transition: width 0.3s ease, transform 0.3s ease, padding 0.3s ease;
-
-  &.portrait {
-    //transform: scale(1);
+    // Core visual style
+    justify-self: center;
+    height: 297mm;
+    margin: 86px;
+    position: relative;
     padding: 30mm;
     padding-top: 120mm;
-    @import 'a4-view';
-  }
+    background-color: var(--color-bright-background);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transform-origin: top center;
 
-  &.landscape {
-    //transform: scale(0.7);
-    padding: 60mm;
-    padding-top: 120mm;
-    @import 'a3-view';
-  }
+    //transform: scale(1);
+    transition: width 0.3s ease, transform 0.3s ease, padding 0.3s ease;
+
+    &.portrait {
+        //transform: scale(1);
+        padding: 30mm;
+        padding-top: 120mm;
+        @import 'a4-view';
+    }
+
+    &.landscape {
+        //transform: scale(0.7);
+        padding: 60mm;
+        padding-top: 120mm;
+        @import 'a3-view';
+    }
 }
 
-.a3-page{
+.a3-page {
     width: 420mm;
 }
 
-.a4-page{
+.a4-page {
     width: 210mm;
 }
 
@@ -577,7 +596,7 @@ form input[type="submit"]:hover,
 }
 
 .din-switch .page {
-  font-size: 0.5rem;
+    font-size: 0.5rem;
 }
 
 .flip-card-inner {

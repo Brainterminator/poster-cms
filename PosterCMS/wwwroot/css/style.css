@@ -28,7 +28,8 @@ main > h1 + a {
   vertical-align: middle;
 }
 
-body, .modal-body {
+body,
+.modal-body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: var(--color-light-background);
   color: var(--color-primary);
@@ -158,6 +159,17 @@ form input[type=submit],
   margin: 0px 4px 0px 0px;
   color: var(--color-bright-background);
   /* border-radius: 4px; */
+}
+
+form input[readonly] {
+  background-color: var(--color-light-background);
+  color: --color-secondary;
+  cursor: not-allowed;
+}
+
+form input[readonly]:focus {
+  border-color: var(--color-secondary);
+  outline: none;
 }
 
 form input[type=submit]:hover,
@@ -436,6 +448,11 @@ form input[type=submit]:hover,
   flex-direction: column;
   overflow: hidden;
   background-color: var(--color-light-background);
+}
+
+.url-modal .modal-content {
+  height: 55%;
+  margin: 11.25% auto;
 }
 
 .modal-header {

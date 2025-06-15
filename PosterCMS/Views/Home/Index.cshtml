@@ -6,7 +6,11 @@
 @model List<PosterModel>
 <div class="headline">
     <h1>Posters</h1>
-    <div class="sortToggle" id="sortToggle"></div>
+    @{
+        if(Model.Count()>=2){
+            <div class="sortToggle" id="sortToggle"></div>
+        }
+    }
 </div>
 
 <section class="poster-grid @(pagesize == "A3" ? "a3" : "")">

@@ -153,6 +153,12 @@
                 scope.parentElement.children[1].classList.remove('a3-page');
             }
         });
+        document.querySelectorAll('[contenteditable="true"]').forEach(el => {
+            const content = el.innerText.trim();
+            if (!content) {
+                el.innerHTML = ""; // removes whitespace/br/text nodes
+            }
+        });
         let currentImageField = "";
 
         function updateModel(el, field) {

@@ -22,10 +22,7 @@
                         onclick="openImageManager('ImageUrl1')">
 
                     <button type="button" class="edit-url-btn button"
-                        onclick="openUrlEditor('ImageUrl1', '@Model.ImageUrl1')">Edit
-                        URL</button>
-
-                    <input type="hidden" id="ImageUrl1" name="ImageUrl1" value="@Model.ImageUrl1">
+                        onclick="openUrlEditor('ImageUrl1')">Edit URL</button>
                 </div>
 
 
@@ -41,10 +38,7 @@
                         onclick="openImageManager('ImageUrl2')">
 
                     <button type="button" class="edit-url-btn button"
-                        onclick="openUrlEditor('ImageUrl2', '@Model.ImageUrl2')">Edit
-                        URL</button>
-
-                    <input type="hidden" id="ImageUrl2" name="ImageUrl2" value="@Model.ImageUrl2">
+                        onclick="openUrlEditor('ImageUrl2')">Edit URL</button>
                 </div>
             </article>
 
@@ -58,10 +52,7 @@
                         onclick="openImageManager('ImageUrl3')">
 
                     <button type="button" class="edit-url-btn button"
-                        onclick="openUrlEditor('ImageUrl3', '@Model.ImageUrl3')">Edit
-                        URL</button>
-
-                    <input type="hidden" id="ImageUrl3" name="ImageUrl3" value="@Model.ImageUrl3">
+                        onclick="openUrlEditor('ImageUrl3')">Edit URL</button>
                 </div>
             </article>
         </main>
@@ -217,9 +208,9 @@
             closeImageManager();
         }
 
-        function openUrlEditor(fieldId, currentUrl) {
+        function openUrlEditor(fieldId) {
             document.getElementById('urlTargetField').value = fieldId;
-            document.getElementById('newImageUrl').value = currentUrl;
+            document.getElementById('newImageUrl').value = document.querySelector(`img[data-image-field='${fieldId}']`).src;
             document.getElementById('urlModal').style.display = 'block';
         }
 
@@ -233,8 +224,9 @@
 
             document.getElementById(fieldId).value = newUrl;
             const img = document.querySelector(`img[data-image-field='${fieldId}']`);
+            const img_c = currentImageField;
             if (img) img.src = newUrl;
-
+            if (img_c) img_c.src = newUrl;
             closeUrlEditor();
         }
 

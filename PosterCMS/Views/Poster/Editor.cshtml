@@ -9,13 +9,13 @@
         <main>
 
 
-            <h1 contenteditable="true" oninput="updateModel(this, 'Title')" data-placeholder="Title...">@Model.Title
+            <h1 contenteditable="true" data-max-length="20" oninput="updateModel(this, 'Title')" data-placeholder="Title...">@Model.Title
             </h1>
 
             <article>
-                <h1 contenteditable="true" oninput="updateModel(this, 'Sub1')" data-placeholder="Subtitle...">
+                <h1 contenteditable="true" data-max-length="30" oninput="updateModel(this, 'Sub1')" data-placeholder="Subtitle...">
                     @Model.Sub1</h1>
-                <p contenteditable="true" oninput="updateModel(this, 'Text1')" data-placeholder="Enter text here...">
+                <p contenteditable="true" data-max-length="870" oninput="updateModel(this, 'Text1')" data-placeholder="Enter text here...">
                     @Model.Text1</p>
                 <div class="image-wrapper">
                     <img src="@Model.ImageUrl1" class="editable-img" data-image-field="ImageUrl1"
@@ -32,9 +32,9 @@
             </article>
 
             <article>
-                <h1 contenteditable="true" oninput="updateModel(this, 'Sub2')" data-placeholder="Subtitle...">
+                <h1 contenteditable="true" data-max-length="20" oninput="updateModel(this, 'Sub2')" data-placeholder="Subtitle...">
                     @Model.Sub2</h1>
-                <p contenteditable="true" oninput="updateModel(this, 'Text2')" data-placeholder="Enter text here...">
+                <p contenteditable="true" data-max-length="560" oninput="updateModel(this, 'Text2')" data-placeholder="Enter text here...">
                     @Model.Text2</p>
                 <div class="image-wrapper">
                     <img src="@Model.ImageUrl2" class="editable-img" data-image-field="ImageUrl2"
@@ -49,9 +49,9 @@
             </article>
 
             <article>
-                <h1 contenteditable="true" oninput="updateModel(this, 'Sub3')" data-placeholder="Subtitle...">
+                <h1 contenteditable="true" data-max-length="20" oninput="updateModel(this, 'Sub3')" data-placeholder="Subtitle...">
                     @Model.Sub3</h1>
-                <p contenteditable="true" oninput="updateModel(this, 'Text3')" data-placeholder="Enter text here...">
+                <p contenteditable="true" data-max-length="560" oninput="updateModel(this, 'Text3')" data-placeholder="Enter text here...">
                     @Model.Text3</p>
                 <div class="image-wrapper">
                     <img src="@Model.ImageUrl3" class="editable-img" data-image-field="ImageUrl3"
@@ -134,6 +134,34 @@
 
 @section Scripts {
     <script>
+        (function () {
+            function placeCaretAtEnd(el) {
+                const range = document.createRange();
+                const sel = window.getSelection();
+                range.selectNodeContents(el);
+                range.collapse(false);
+                sel.removeAllRanges();
+                sel.addRange(range);
+            }
+
+            function enforceMaxLength(editable) {
+                const maxLength = parseInt(editable.dataset.maxLength, 10);
+                if (isNaN(maxLength)) return;
+
+                editable.addEventListener('input', () => {
+                    const text = editable.innerText;
+                    if (text.length > maxLength) {
+                        editable.innerText = text.substring(0, maxLength);
+                        placeCaretAtEnd(editable);
+
+                        // Optional: dispatch input again if you're binding it to a hidden field
+                        editable.dispatchEvent(new Event('input'));
+                    }
+                });
+            }
+
+            document.querySelectorAll('[contenteditable][data-max-length]').forEach(enforceMaxLength);
+        })();
         document.addEventListener('pageSizeChanged', function (e) {
             const newPageSize = e.detail.pageSize;
             const scope = document.querySelector('.embedded-scope');

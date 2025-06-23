@@ -7,7 +7,8 @@
 <div class="headline">
     <h1>Posters</h1>
     @{
-        if(Model.Count()>=2){
+        if (Model.Count() >= 2)
+        {
             <div class="sortToggle" id="sortToggle"></div>
         }
     }
@@ -15,20 +16,24 @@
 
 <section class="poster-grid @(pagesize == "A3" ? "a3" : "")">
     <a class="button add-poster" asp-area="" asp-controller="Poster" asp-action="Create">+</a>
-    @{
-        foreach (var poster in Model)
-        {
-            <article class="poster-preview" data-editdate="@poster.EditDate.ToString("s")">
-                <a asp-area="" asp-controller="Poster" asp-action="Index" asp-route-id=@poster.ID><img
-                        src="/thumbnails/@(poster.ID)@(pagesize == "A3" ? "-A3-landscape" : "-A4-portrait").jpg"></a>
-                <div class="poster-labels">
-                    <a asp-area="" asp-controller="Poster" asp-action="Index" asp-route-id=@poster.ID>@poster.Title</a>
-                    <a asp-area="" asp-controller="Poster" asp-action="Index" asp-route-id=@poster.ID>
-                        <p class="time">@poster.EditDate.ToString().Split(' ')[0]</p>
-                    </a>
-                </div>
-            </article>
-        }
+    @foreach (var poster in Model)
+    {
+        <article class="poster-preview" data-editdate="@poster.EditDate.ToString("s")">
+            <a asp-area="" asp-controller="Poster" asp-action="Index" asp-route-id="@poster.ID">
+                <!-- Placeholder -->
+                <div class="image-placeholder @(pagesize == "A3" ? "a3" : "")"></div>
+                <!-- Hidden Image -->
+                <img class="lazy-image hidden"
+                    data-src="/thumbnails/@poster.ID@(pagesize == "A3" ? "-A3-landscape" : "-A4-portrait").jpg"
+                    alt="@poster.Title">
+            </a>
+            <div class="poster-labels">
+                <a asp-area="" asp-controller="Poster" asp-action="Index" asp-route-id=@poster.ID>@poster.Title</a>
+                <a asp-area="" asp-controller="Poster" asp-action="Index" asp-route-id=@poster.ID>
+                    <p class="time">@poster.EditDate.ToString().Split(' ')[0]</p>
+                </a>
+            </div>
+        </article>
     }
 </section>
 
@@ -57,6 +62,17 @@
                 } else {
                     // Change A3 source to A4 source
                     img.src = img.src.replace('-A3-landscape.jpg', '-A4-portrait.jpg');
+                }
+            });
+
+            const placeholders = posterGrid.querySelectorAll('.poster-preview .image-placeholder');
+            placeholders.forEach(ph => {
+                if (newPageSize === 'A3') {
+                    // Change A4 source to A3 source
+                    ph.classList.add('a3');
+                } else {
+                    // Change A3 source to A4 source
+                    ph.classList.remove('a3');
                 }
             });
         });
@@ -93,6 +109,36 @@
             posterGrid.innerHTML = '';
             posterGrid.appendChild(addButton);
             posters.forEach(p => posterGrid.appendChild(p));
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const placeholders = document.querySelectorAll('.image-placeholder');
+            const lazyImages = document.querySelectorAll('.lazy-image');
+
+            // Simulate image loading delay
+            const loadImagesWithDelay = (images, delay) => {
+                setTimeout(() => {
+                    images.forEach((img, index) => {
+                        // Replace placeholder with the actual image
+                        const realImage = lazyImages[index];
+                        const src = realImage.dataset.src; // Fetch the real path from data-src
+                        realImage.src = src;
+
+                        // Once the image is loaded, remove the placeholder and show the image
+                        realImage.onload = () => {
+                            realImage.classList.remove('hidden'); // Display the loaded image
+                            placeholders[index].style.display = 'none'; // Hide the gray placeholder
+                        };
+
+                        // If the image fails to load, you can set a fallback (optional)
+                        realImage.onerror = () => {
+                            console.error(`Failed to load image: ${src}`);
+                        };
+                    });
+                }, delay);
+            };
+
+            loadImagesWithDelay(lazyImages, 0);
         });
     </script>
 }

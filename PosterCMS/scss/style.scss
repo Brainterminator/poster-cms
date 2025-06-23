@@ -679,3 +679,40 @@ form input[type="submit"]:hover,
 #sortToggle.asc::before {
     transform: rotate(315deg);
 }
+
+
+.image-placeholder {
+    width: 300px;
+    height: 422px;
+    background-color: #ccc; /* Gray box */
+    display: block;
+    position: relative;
+    animation: loading 3s infinite;
+}
+
+.image-placeholder.a3 {
+    width: 600px;
+    transition: transform 0.3s ease;
+}
+
+@keyframes loading {
+    0% {
+        background-color: #eeeeee;
+    }
+    50% {
+        background-color: #dddddd;
+    }
+    100% {
+        background-color: #eeeeee;
+    }
+}
+
+/* Hide the image until it’s loaded */
+.lazy-image.hidden {
+    display: none;
+}
+
+/* Show the image when it's fully loaded */
+.lazy-image {
+    display: block;
+}

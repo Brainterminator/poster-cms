@@ -5,7 +5,7 @@ by Leo Sulzbacher
 Start by cloning the repository:
 
 ```bash
-git clone https://git.fh-muenster.de/ls177229/web-dev.git
+git clone https://github.com/Brainterminator/poster-cms
 ```
 
 Then you need to setup a local [PostgreSQL](https://www.postgresql.org/download/) Server on your machine.
@@ -27,7 +27,6 @@ dotnet tool install --global dotnet-ef
 You can now migrate your database. Run the following command in the root of this repo:
 
 ```bash
-cd PosterCMS/
 dotnet ef database update
 ```
 
@@ -44,5 +43,3 @@ If you proceeded all prior steps you should be able to run the server using:
 ```bash
 dotnet run
 ```
-
-Always remember that the dotnet commands should be run from inside the _PosterCMS_ folder

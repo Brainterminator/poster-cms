@@ -1,10 +1,10 @@
 .vscode/
-PosterCMS/bin/
-PosterCMS/obj/
-PosterCMS/publish/
-PosterCMS/appsettings.json
-PosterCMS/appsettings.Development.json
-PosterCMS/wwwroot/thumbnails/*
-PosterCMS/wwwroot/uploads/*
+bin/
+obj/
+publish/
+appsettings.json
+appsettings.Development.json
+wwwroot/thumbnails/*
+wwwroot/uploads/*
 .fake
 .DS_Store
